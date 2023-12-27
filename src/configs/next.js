@@ -1,8 +1,6 @@
-"use strict";
+import react from "./react";
+import { mergeConfigs } from "../helpers";
 
-const react = require("./react");
-const { mergeConfigs } = require("../helpers");
-
-module.exports = mergeConfigs(react, {
+export default mergeConfigs(react, {
   extends: [ "next/core-web-vitals" ],
 });

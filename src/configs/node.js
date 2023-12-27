@@ -1,9 +1,7 @@
-"use strict";
+import plain from "./plain";
+import { mergeConfigs } from "../helpers";
 
-const plain = require("./plain");
-const { mergeConfigs } = require("../helpers");
-
-module.exports = mergeConfigs(plain, {
+export default mergeConfigs(plain, {
   extends: [ "plugin:node/recommended" ],
   plugins: [ "node" ],
   rules: {

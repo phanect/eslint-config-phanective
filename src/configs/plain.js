@@ -1,8 +1,6 @@
-"use strict";
+import { jsRules, tsRules } from "./overrides/lang-specific";
 
-const { jsRules, tsRules } = require("./overrides/lang-specific");
-
-module.exports = {
+export default {
   extends: [
     "plugin:editorconfig/noconflict",
     "plugin:promise/recommended",

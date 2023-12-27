@@ -1,10 +1,8 @@
-"use strict";
+import { jsRules } from "./overrides/lang-specific";
+import { nuxtBase } from "./overrides/nuxt";
+import { mergeConfigs } from "../helpers";
 
-const { jsRules } = require("./overrides/lang-specific");
-const nuxtBase = require("./overrides/nuxt");
-const { mergeConfigs } = require("../helpers");
-
-module.exports = mergeConfigs(nuxtBase, {
+export default mergeConfigs(nuxtBase, {
   overrides: [
     mergeConfigs(jsRules, {
       files: [ "*.vue" ],

@@ -1,12 +1,10 @@
-"use strict";
-
-const { tsRules } = require("./overrides/lang-specific");
-const nuxtBase = require("./overrides/nuxt");
-const { mergeConfigs } = require("../helpers");
+import { tsRules } from "./overrides/lang-specific";
+import { nuxtBase } from "./overrides/nuxt";
+import { mergeConfigs } from "../helpers";
 
 delete tsRules.parser; // Do not override parser: "vue-eslint-parser"
 
-module.exports = mergeConfigs(nuxtBase, {
+export default mergeConfigs(nuxtBase, {
   overrides: [
     mergeConfigs(tsRules, {
       files: [ "*.vue" ],

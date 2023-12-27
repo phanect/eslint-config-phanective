@@ -1,8 +1,6 @@
-"use strict";
+import { vueBase } from "./vue.js";
+import { mergeConfigs } from "../../helpers";
 
-const vueRules = require("./vue.js");
-const { mergeConfigs } = require("../../helpers");
-
-module.exports = mergeConfigs(vueRules, {
+export const nuxtBase = mergeConfigs(vueBase, {
   extends: [ "@nuxt/eslint-config" ],
 });

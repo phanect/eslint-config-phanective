@@ -1,11 +1,9 @@
-"use strict";
-
 /**
  * Sort array of the objects by the same order.
  * @param {object[]} objects - Aarray of objects.
  * @returns {object[]} - Sorted array of the objects.
  */
-module.exports.sortObjects = (objects) => objects.sort((obj1, obj2) => {
+export const sortObjects = (objects) => objects.sort((obj1, obj2) => {
   const keys = Object.keys(obj1).sort();
 
   for (const key of keys) {

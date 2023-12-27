@@ -1,10 +1,8 @@
-"use strict";
+import { jsRules } from "./overrides/lang-specific";
+import { vueBase } from "./overrides/vue";
+import { mergeConfigs } from "../helpers";
 
-const { jsRules } = require("./overrides/lang-specific");
-const vueBase = require("./overrides/vue");
-const { mergeConfigs } = require("../helpers");
-
-module.exports = mergeConfigs(vueBase, {
+export default mergeConfigs(vueBase, {
   overrides: [
     mergeConfigs(jsRules, {
       files: [ "*.vue" ],
