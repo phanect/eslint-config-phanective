@@ -15,7 +15,7 @@ const plain: Linter.Config = {
   },
   parserOptions: {
     ecmaVersion: 2022,
-    sourceType: "script", // "module" is only for JavaScript modules
+    sourceType: "module",
   },
   plugins: [
     "document-write",
@@ -108,12 +108,6 @@ const plain: Linter.Config = {
       files: [ "*.cjs" ],
       parserOptions: {
         sourceType: "script",
-      },
-    },
-    {
-      files: [ "*.mjs", "*.jsx" ],
-      parserOptions: {
-        sourceType: "module",
       },
     },
     {
