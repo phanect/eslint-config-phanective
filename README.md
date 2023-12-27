@@ -41,13 +41,11 @@ module.exports = {
   parserOptions: {
     project: join(__dirname, "./tsconfig.eslint.json"),
   },
-  // Add sourceType: "module" if you use `import`/`export` syntax in JS. (e.g. JS modules, webpack)
-  // You don't need this if only use TS. By default, sourceType is "script" in JS and "module" in TS.
-  // To avoid treating *.cjs files as modules, ensure to use `overrides` to only apply it to *.js.
+  // Add `sourceType: "script"` if \*.js files should be treated as CommonJS.
   overrides: [{
     files: [ "*.js", "**/*.js" ],
     parserOptions: {
-      sourceType: "module",
+      sourceType: "script",
     },
   }],
 };
