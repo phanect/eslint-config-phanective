@@ -4,7 +4,6 @@ import type { Linter } from "eslint";
 const plain: Linter.Config = {
   extends: [
     "plugin:editorconfig/noconflict",
-    "plugin:jsdoc/recommended",
     "plugin:promise/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
@@ -57,15 +56,6 @@ const plain: Linter.Config = {
     "editorconfig/no-trailing-spaces": "error",
 
     //
-    // Warnings: JSDoc
-    // JSDoc rules should not be reported as errors but warnings
-    //
-    "jsdoc/check-examples": "off", // temporary disabled because it is incompatible with ESLint 8
-    "jsdoc/check-indentation": "warn",
-    "jsdoc/check-syntax": "warn",
-    "jsdoc/require-hyphen-before-param-description": "warn",
-
-    //
     // Warnings - styles
     // These are just a preference in coding style.
     // Following rules doesn't reduce quality or readability
@@ -95,9 +85,6 @@ const plain: Linter.Config = {
     //
     "import/no-unresolved": "off", // Not working other than Node or Webpack
     "no-console": "off",
-
-    "jsdoc/require-jsdoc": "off",
-    "jsdoc/require-description-complete-sentence": "off",
   },
   overrides: [
     {
