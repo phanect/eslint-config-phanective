@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-phanective",
+  "name": "@phanect/configs",
   "version": "2023.8.26",
   "description": "Personal ESLint configuration for Jumpei Ogawa (@phanect)",
   "type": "module",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:phanect/eslint-plugin.git"
+    "url": "git@github.com:phanect/configs.git"
   },
   "author": "Jumpei Ogawa (https://phanective.org)",
   "license": "CC0-1.0",
