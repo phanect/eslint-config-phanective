@@ -51,14 +51,6 @@ module.exports = {
 };
 ```
 
-Also create .eslintrc.js in the test directory for test-specific configs:
-
-```javascript
-module.exports = {
-  extends: "phanective/jest",
-};
-```
-
 Supported configs:
 
 - phanective
@@ -69,7 +61,6 @@ Supported configs:
 - phanective/vue+ts (Vue 3)
 - phanective/nuxt+js (Nuxt 3)
 - phanective/nuxt+ts (Nuxt 3)
-- phanective/jest
 
 Test with realworld projects
 ----------------------------
