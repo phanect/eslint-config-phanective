@@ -23,6 +23,7 @@ module.exports = {
   jsRules: {
     extends: [
       "eslint:recommended",
+      "plugin:jsdoc/recommended",
     ],
     rules: {
       ...commonRulesJS,
@@ -37,6 +38,7 @@ module.exports = {
     extends: [
       "plugin:@typescript-eslint/recommended",
       "plugin:import/typescript",
+      "plugin:jsdoc/recommended-typescript",
     ],
     parser: "@typescript-eslint/parser",
     parserOptions: {
@@ -69,11 +71,6 @@ module.exports = {
       // These rules may warn new ES syntax which is supported by TypeScript (e.g. import)
       "node/no-unsupported-features/es-builtins": "off",
       "node/no-unsupported-features/es-syntax": "off",
-    },
-    settings: {
-      jsdoc: {
-        mode: "typescript",
-      },
     },
   },
 };

@@ -5,7 +5,6 @@ const { jsRules, tsRules } = require("./overrides/lang-specific");
 module.exports = {
   extends: [
     "plugin:editorconfig/noconflict",
-    "plugin:jsdoc/recommended",
     "plugin:promise/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
