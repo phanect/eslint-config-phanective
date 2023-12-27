@@ -1,6 +1,6 @@
 {
   "name": "@phanect/configs",
-  "version": "2023.8.26",
+  "version": "2023.12.30",
   "description": "Personal ESLint configuration for Jumpei Ogawa (@phanect)",
   "type": "module",
   "module": "./dist/eslint.mjs",
