@@ -1,6 +1,6 @@
-import { jsRules } from "./overrides/lang-specific";
-import { nuxtBase } from "./overrides/nuxt";
-import { mergeConfigs } from "../helpers";
+import { jsRules } from "./overrides/lang-specific.js";
+import { nuxtBase } from "./overrides/nuxt.js";
+import { mergeConfigs } from "../helpers.js";
 
 export default mergeConfigs(nuxtBase, {
   overrides: [

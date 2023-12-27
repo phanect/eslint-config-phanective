@@ -1,5 +1,5 @@
-import plain from "../plain";
-import { mergeConfigs } from "../../helpers";
+import plain from "../plain.js";
+import { mergeConfigs } from "../../helpers.js";
 
 export const vueBase = mergeConfigs(plain, {
   extends: [ "plugin:vue/vue3-recommended" ],

@@ -1,4 +1,4 @@
-import { jsRules, tsRules } from "./overrides/lang-specific";
+import { jsRules, tsRules } from "./overrides/lang-specific.js";
 
 export default {
   extends: [

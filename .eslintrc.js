@@ -1,5 +1,6 @@
 "use strict";
 
+const { join } = require("node:path");
 const config = require("./node.json");
 const { mergeConfigs } = require("./src/helpers");
 
@@ -10,7 +11,7 @@ module.exports = mergeConfigs(config, {
     node: true,
   },
   parserOptions: {
-    project: "./tests/ts/tsconfig.json",
+    project: join(__dirname, "tsconfig.json"),
   },
   ignorePatterns: [
     "tests/js/**",

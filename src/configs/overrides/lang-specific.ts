@@ -1,4 +1,4 @@
-import { toTSRules } from "../../helpers";
+import { toTSRules } from "../../helpers.js";
 
 const commonRulesJS = {
   "no-unused-vars": "error",

@@ -1,6 +1,6 @@
-import { jsRules } from "./overrides/lang-specific";
-import { vueBase } from "./overrides/vue";
-import { mergeConfigs } from "../helpers";
+import { jsRules } from "./overrides/lang-specific.js";
+import { vueBase } from "./overrides/vue.js";
+import { mergeConfigs } from "../helpers.js";
 
 export default mergeConfigs(vueBase, {
   overrides: [

@@ -7,7 +7,7 @@
   "scripts": {
     "build": "node --trace-warnings --unhandled-rejections=strict ./scripts/build.js",
     "test": "jest",
-    "lint": "eslint --ignore-path=.gitignore --ext=.js,.cjs,.mjs,.jsx,.ts,.tsx,.vue,.json,.json5 .",
+    "lint": "tsc --noEmit && eslint --ignore-path=.gitignore --ext=.js,.cjs,.mjs,.jsx,.ts,.tsx,.vue,.json,.json5 .",
     "clean": "git clean -dX --force",
     "release": "npm run build && npm publish . --access public"
   },
@@ -42,6 +42,9 @@
   },
   "devDependencies": {
     "@types/jest": "^28.1.6",
+    "@types/lodash.clonedeep": "^4.5.9",
+    "@types/lodash.mergewith": "^4.6.9",
+    "@types/node": "^20.10.6",
     "eslint": "^8.0.0",
     "jest": "^28.1.3",
     "typescript": "^5.3.3"

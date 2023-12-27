@@ -1,4 +1,4 @@
-import { toTSRules, mergeConfigs } from "../src/helpers";
+import { toTSRules, mergeConfigs } from "../src/helpers.js";
 
 test("toTSRules", () => {
   const result = toTSRules({

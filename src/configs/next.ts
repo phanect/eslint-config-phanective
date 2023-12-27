@@ -1,5 +1,5 @@
-import react from "./react";
-import { mergeConfigs } from "../helpers";
+import react from "./react.js";
+import { mergeConfigs } from "../helpers.js";
 
 export default mergeConfigs(react, {
   extends: [ "next/core-web-vitals" ],
