@@ -114,6 +114,46 @@ module.exports = {
       ...tsRules,
     },
     {
+      files: [
+        "*.test.js",
+        "*.test.jsx",
+        "*.test.mjs",
+        "*.test.cjs",
+        "*.test.ts",
+        "*.test.tsx",
+      ],
+
+      extends: [
+        "plugin:jest/recommended",
+      ],
+
+      env: {
+        node: true,
+        "jest/globals": true,
+      },
+      plugins: [ "jest" ],
+
+      rules: {
+        //
+        // Errors
+        //
+        "jest/no-disabled-tests": "error",
+        "jest/expect-expect": [ "error", {
+          assertFunctionNames: [ "expect", "ok" ],
+        }],
+
+        //
+        // Warnings - styles
+        //
+        "jest/prefer-to-have-length": "warn",
+
+        //
+        // Off
+        //
+        "jest/no-conditional-expect": "off",
+      },
+    },
+    {
       files: [ "*.json", "*.json5" ],
       extends: "plugin:jsonc/base",
       parser: "jsonc-eslint-parser",

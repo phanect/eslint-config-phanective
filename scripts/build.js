@@ -11,7 +11,6 @@ const vueJS = require("../src/configs/vue+js");
 const vueTS = require("../src/configs/vue+ts");
 const nuxtJS = require("../src/configs/nuxt+js");
 const nuxtTS = require("../src/configs/nuxt+ts");
-const _jest = require("../src/configs/jest"); // do not name this variable "jest" to avoid name conflict on test
 
 const rootDir = join(__dirname, "../");
 
@@ -26,7 +25,6 @@ const rootDir = join(__dirname, "../");
     writeFile(join(rootDir, "vue+ts.json"), JSON.stringify(vueTS, null, 2)),
     writeFile(join(rootDir, "nuxt+js.json"), JSON.stringify(nuxtJS, null, 2)),
     writeFile(join(rootDir, "nuxt+ts.json"), JSON.stringify(nuxtTS, null, 2)),
-    writeFile(join(rootDir, "jest.json"), JSON.stringify(_jest, null, 2)),
   ]);
 
   console.log("JSONs are successfully generated");

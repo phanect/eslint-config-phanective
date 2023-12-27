@@ -6,7 +6,6 @@ const { join } = require("path");
 const { mergeConfigs } = require("../src/helpers");
 const plainConfig = require("../plain.json");
 const nodeConfig = require("../node.json");
-const jestConfig = require("../jest.json");
 const { sortObjects } = require("./testutils");
 
 const jsOpts = {
@@ -461,9 +460,8 @@ test("modules - ts - valid", async () => {
 });
 
 for (const lang of [ "js", "ts" ]) {
-  const config = mergeConfigs(plainConfig, jestConfig);
   const jestOpts = {
-    baseConfig: mergeConfigs(config, lang === "ts" ? {
+    baseConfig: mergeConfigs(plainConfig, lang === "ts" ? {
       parserOptions: {
         project: join(__dirname, "ts/tsconfig.json"),
       },
