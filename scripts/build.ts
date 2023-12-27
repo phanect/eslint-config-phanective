@@ -10,7 +10,6 @@ import vueJS from "../src/configs/vue+js.ts";
 import vueTS from "../src/configs/vue+ts.ts";
 import nuxtJS from "../src/configs/nuxt+js.ts";
 import nuxtTS from "../src/configs/nuxt+ts.ts";
-import _jest from "../src/configs/jest.ts"; // do not name this variable "jest" to avoid name conflict on test
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const rootDir = join(__dirname, "../");
@@ -25,7 +24,6 @@ await Promise.all([
   writeFile(join(rootDir, "vue+ts.json"), JSON.stringify(vueTS, null, 2)),
   writeFile(join(rootDir, "nuxt+js.json"), JSON.stringify(nuxtJS, null, 2)),
   writeFile(join(rootDir, "nuxt+ts.json"), JSON.stringify(nuxtTS, null, 2)),
-  writeFile(join(rootDir, "jest.json"), JSON.stringify(_jest, null, 2)),
 ]);
 
 console.log("JSONs are successfully generated");

@@ -6,7 +6,6 @@ import deepmerge from "deepmerge";
 
 import plainConfig from "../plain.json";
 import nodeConfig from "../node.json";
-import jestConfig from "../jest.json";
 import { sortObjects } from "@phanect/utils";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -399,9 +398,8 @@ test("ts - invalid", async () => {
 });
 
 for (const lang of [ "js", "ts" ]) {
-  const config = deepmerge(plainConfig, jestConfig);
   const jestOpts: ESLint.Options = {
-    baseConfig: deepmerge(config as unknown as Linter.Config, lang === "ts" ? {
+    baseConfig: deepmerge(plainConfig as unknown as Linter.Config, lang === "ts" ? {
       parserOptions: {
         project: join(__dirname, "fixtures/tsconfig.json"),
       },

@@ -101,6 +101,46 @@ const plain: Linter.Config = {
       ...tsRules,
     },
     {
+      files: [
+        "*.test.js",
+        "*.test.jsx",
+        "*.test.mjs",
+        "*.test.cjs",
+        "*.test.ts",
+        "*.test.tsx",
+      ],
+
+      extends: [
+        "plugin:vitest/legacy-recommended",
+      ],
+
+      env: {
+        node: true,
+      },
+      plugins: [ "vitest" ],
+
+      rules: {
+        //
+        // Errors
+        //
+        "vitest/no-disabled-tests": "error",
+        "vitest/expect-expect": [ "error", {
+          assertFunctionNames: [ "expect", "ok" ],
+        }],
+
+        //
+        // Warnings - styles
+        //
+        "vitest/prefer-to-have-length": "warn",
+
+        //
+        // Off
+        //
+        "vitest/no-conditional-expect": "off",
+        "vitest/require-top-level-describe": "off",
+      },
+    },
+    {
       files: [ "*.json", "*.json5" ],
       extends: "plugin:jsonc/base",
       parser: "jsonc-eslint-parser",
