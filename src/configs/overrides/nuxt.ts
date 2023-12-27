@@ -1,6 +1,16 @@
+import { FlatCompat } from "@eslint/eslintrc";
 import { vueBase } from "./vue.js";
-import { mergeConfigs } from "../../helpers.js";
+import { projectRoot } from "../../helpers.js";
+import type { Linter } from "eslint";
 
-export const nuxtBase = mergeConfigs(vueBase, {
-  extends: [ "@nuxt/eslint-config" ],
+const compat = new FlatCompat({
+  baseDirectory: projectRoot,
+  resolvePluginsRelativeTo: projectRoot,
 });
+
+export const nuxtBase: Linter.FlatConfig[] = [
+  ...vueBase,
+  ...compat.config({
+    extends: [ "@nuxt/eslint-config" ],
+  }),
+];

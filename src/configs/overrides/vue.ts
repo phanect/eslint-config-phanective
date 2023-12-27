@@ -1,7 +1,13 @@
-import plain from "../plain.js";
-import { mergeConfigs } from "../../helpers.js";
+import { FlatCompat } from "@eslint/eslintrc";
+import { projectRoot } from "../../helpers.js";
+import type { Linter } from "eslint";
 
-export const vueBase = mergeConfigs(plain, {
+const compat = new FlatCompat({
+  baseDirectory: projectRoot,
+  resolvePluginsRelativeTo: projectRoot,
+});
+
+export const vueBase: Linter.FlatConfig[] = compat.config({
   extends: [ "plugin:vue/vue3-recommended" ],
   env: {
     browser: true,

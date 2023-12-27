@@ -1,3 +1,5 @@
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import mergeWith from "lodash.mergewith";
 import cloneDeep from "lodash.clonedeep";
 import type { Linter } from "eslint";
@@ -22,3 +24,10 @@ export const mergeConfigs = (config1, config2) => {
     }
   });
 };
+
+// If you want to get project root on e.g. src/configs/overrides/lang-spacific.ts,
+// you may want to run join(dirname(fileURLToPath(import.meta.url)), "../../..").
+// However, since built file is dist/eslint.mjs, you cannot get project by "../../..".
+// I wanted unbuild to handle this so that dist/eslint.mjs refers "..", but it didn't.
+// Reporting at https://github.com/unjs/unbuild/issues/354
+export const projectRoot = join(dirname(fileURLToPath(import.meta.url)), "..");

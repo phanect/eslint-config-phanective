@@ -1,6 +1,14 @@
-import { toTSRules } from "../../helpers.js";
+import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import { toTSRules, projectRoot } from "../../helpers.js";
+import type { Linter } from "eslint";
 
-const commonRulesJS = {
+const compat = new FlatCompat({
+  baseDirectory: projectRoot,
+  resolvePluginsRelativeTo: projectRoot,
+});
+
+const commonRulesJS: Linter.RulesRecord = {
   "no-unused-vars": "error",
   "no-use-before-define": "error",
   semi: [ "error", "always" ],
@@ -17,11 +25,15 @@ const commonRulesJS = {
   "require-await": "off",
 };
 
-export const jsRules = {
-  extends: [
-    "eslint:recommended",
-    "plugin:jsdoc/recommended",
-  ],
+export const jsRule: Linter.FlatConfig = {
+  ...js.configs.recommended,
+  ...compat.config({
+    extends: [
+      "plugin:jsdoc/recommended",
+    ],
+    plugins: [ "jsdoc" ],
+  })[0],
+
   rules: {
     ...commonRulesJS,
 
@@ -30,19 +42,26 @@ export const jsRules = {
     // so I enable this rule only for JavaScript
     strict: [ "error", "safe" ],
   },
+
+  files: [ "*.js", "*.mjs", "*.cjs", "*.jsx" ],
 };
 
-export const tsRules = {
-  extends: [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:import/typescript",
-    "plugin:jsdoc/recommended-typescript",
-  ],
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
+export const tsRule: Linter.FlatConfig = {
+  files: [ "*.ts", "*.mts", "*.cts", "*.tsx" ],
+
+  ...compat.config({
+    extends: [
+      "plugin:@typescript-eslint/recommended",
+      "plugin:import/typescript",
+      "plugin:jsdoc/recommended-typescript",
+    ],
+    plugins: [ "@typescript-eslint", "jsdoc" ],
+    parser: "@typescript-eslint/parser",
+  })[0],
+
+  languageOptions: {
     sourceType: "module",
   },
-  plugins: [ "@typescript-eslint" ],
   rules: {
     ...toTSRules(commonRulesJS),
 

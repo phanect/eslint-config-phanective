@@ -1,6 +1,15 @@
-import react from "./react.js";
-import { mergeConfigs } from "../helpers.js";
+import { FlatCompat } from "@eslint/eslintrc";
+import { react } from "./react.js";
+import { projectRoot } from "../helpers.js";
+import type { Linter } from "eslint";
 
-export default mergeConfigs(react, {
-  extends: [ "next/core-web-vitals" ],
+const compat = new FlatCompat({
+  baseDirectory: projectRoot,
+  resolvePluginsRelativeTo: projectRoot,
 });
+
+export const next: Linter.FlatConfig[] = [
+  // plain is not required here because it is imported in `react()`
+  ...react,
+  ...compat.extends("next/core-web-vitals"),
+];

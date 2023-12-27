@@ -7,7 +7,7 @@
   "scripts": {
     "build": "node --trace-warnings --unhandled-rejections=strict ./scripts/build.js",
     "test": "jest",
-    "lint": "tsc --noEmit && eslint --ignore-path=.gitignore --ext=.js,.cjs,.mjs,.jsx,.ts,.tsx,.vue,.json,.json5 .",
+    "lint": "tsc --noEmit && eslint .",
     "clean": "git clean -dX --force",
     "release": "npm run build && npm publish . --access public"
   },
@@ -22,6 +22,8 @@
     "npm": ">=10.x"
   },
   "dependencies": {
+    "@eslint/eslintrc": "^3.0.0",
+    "@eslint/js": "^8.56.0",
     "@nuxt/eslint-config": "latest",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
@@ -41,6 +43,8 @@
     "lodash.mergewith": "^4.6.2"
   },
   "devDependencies": {
+    "@types/eslint__eslintrc": "^2.1.1",
+    "@types/eslint__js": "^8.42.3",
     "@types/jest": "^28.1.6",
     "@types/lodash.clonedeep": "^4.5.9",
     "@types/lodash.mergewith": "^4.6.9",
