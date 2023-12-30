@@ -59,9 +59,6 @@ export const tsRule = (): Linter.FlatConfig => ({
     parser: "@typescript-eslint/parser",
   })[0],
 
-  languageOptions: {
-    sourceType: "module",
-  },
   rules: {
     ...toTSRules(commonRulesJS),
 
