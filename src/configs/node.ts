@@ -12,8 +12,10 @@ export default deepmerge(plain, {
       extends: [ "plugin:n/recommended-script" ],
     },
     {
+      // Import from devDependencies should be allowed for scripts used in local development.
       files: [
         // config files
+        ".config/", // ./config/ directory proposal by @pi0 https://github.com/pi0/config-dir
         "*.config.*",
         ".eslintrc",
         ".eslintrc.*",
