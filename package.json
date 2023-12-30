@@ -26,6 +26,7 @@
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
     "eslint-config-next": "latest",
+    "eslint-import-resolver-typescript": "latest",
     "eslint-plugin-document-write": "latest",
     "eslint-plugin-editorconfig": "latest",
     "eslint-plugin-import-x": "^0.5.0",

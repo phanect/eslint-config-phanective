@@ -97,5 +97,16 @@ export const tsRules: Linter.Config = {
     jsdoc: {
       mode: "typescript",
     },
+    "import-x/resolver": {
+      typescript: {
+        extensions: [
+          ".js", ".mjs", ".cjs",
+          ".ts", ".mts", ".cts",
+          ".d.ts", ".json",
+          ".jsx", ".tsx", ".vue", ".svelte",
+        ],
+        alwaysTryTypes: true,
+      },
+    },
   },
 };
