@@ -110,7 +110,7 @@ module.exports = {
       },
     },
     {
-      files: [ "*.ts", "*.tsx" ],
+      files: [ "*.ts", "*.mts", "*.cts", "*.tsx" ],
       ...tsRules,
     },
     {
