@@ -31,9 +31,6 @@ export const plain: Linter.FlatConfig[] = [
     files: [ "*" ],
     ignores: [ "*.json", "*.json5" ],
 
-    env: {
-      es6: true,
-    },
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",
@@ -137,9 +134,6 @@ export const plain: Linter.FlatConfig[] = [
       },
       plugins: [ "jest" ],
     })[0],
-    env: {
-      node: true,
-    },
     rules: {
       //
       // Errors
