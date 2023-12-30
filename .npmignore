@@ -8,3 +8,5 @@ tests/
 .gitignore
 jest.config.js
 yarn.lock
+
+*.d.mts

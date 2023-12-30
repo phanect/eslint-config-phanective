@@ -1,12 +1,7 @@
 #
 # Project-specific
 #
-next.json
-node.json
-nuxt+*.json
-plain.json
-react.json
-vue+*.json
+dist/
 
 #
 # System

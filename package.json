@@ -2,10 +2,19 @@
   "name": "eslint-config-phanective",
   "version": "2023.8.26",
   "description": "Personal ESLint configuration for Jumpei Ogawa (@phanect)",
-  "main": "./plain.json",
   "type": "module",
+  "module": "./dist/eslint.mjs",
+  "types": "./dist/eslint.d.ts",
+  "exports": {
+    "./eslint": {
+      "import": {
+        "default": "./dist/eslint.mjs",
+        "types": "./dist/eslint.d.ts"
+      }
+    }
+  },
   "scripts": {
-    "build": "node --trace-warnings --unhandled-rejections=strict ./scripts/build.js",
+    "build": "unbuild",
     "test": "jest",
     "lint": "tsc --noEmit && eslint .",
     "clean": "git clean -dX --force",
@@ -51,7 +60,8 @@
     "jest": "^28.1.3",
     "lodash.clonedeep": "^4.5.0",
     "lodash.mergewith": "^4.6.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "unbuild": "^2.0.0"
   },
   "peerDependencies": {
     "eslint": "^8.0.0",
