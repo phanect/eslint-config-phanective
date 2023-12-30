@@ -1,12 +1,23 @@
 import { ESLint } from "eslint";
 import { join } from "path";
 import { fileURLToPath } from "node:url";
-import { mergeConfigs } from "../src/helpers";
+import mergeWith from "lodash.mergewith";
+import cloneDeep from "lodash.clonedeep";
 import plainConfig from "../plain.json";
 import nodeConfig from "../node.json";
 import { sortObjects } from "./testutils";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
+
+export const mergeConfigs = (config1, config2) => {
+  const _config1 = cloneDeep(config1);
+
+  return mergeWith(_config1, config2, (a, b) => {
+    if (Array.isArray(a) && Array.isArray(b)) {
+      return a.concat(b);
+    }
+  });
+};
 
 const jsOpts = {
   baseConfig: mergeConfigs(plainConfig, {
@@ -653,4 +664,57 @@ test("Error when 'use strict' in JSM", async () => {
   expect(results).toHaveLength(1);
   expect(results[0].errorCount).toBe(1);
   expect(results[0].warningCount).toBe(0);
+});
+
+test("mergeConfigs", () => {
+  const result = mergeConfigs({
+    foo: [ "a", "b" ],
+    bar: {
+      boo: [ "f", "g" ],
+    },
+  },
+  {
+    foo: [ "c", "d", "e" ],
+    bar: {
+      boo: [ "h", "i", "j" ],
+    },
+  });
+
+  expect(result).toEqual({
+    foo: [ "a", "b", "c", "d", "e" ],
+    bar: {
+      boo: [ "f", "g", "h", "i", "j" ],
+    },
+  });
+});
+
+test("mergeConfigs doesn't modify the original config", () => {
+  const config1 = {
+    foo: [ "a", "b" ],
+    bar: {
+      boo: [ "f", "g" ],
+    },
+  };
+  const config2 = {
+    foo: [ "c", "d", "e" ],
+    bar: {
+      boo: [ "h", "i", "j" ],
+    },
+  };
+
+  mergeConfigs(config1, config2);
+
+  expect(config1).toEqual({
+    foo: [ "a", "b" ],
+    bar: {
+      boo: [ "f", "g" ],
+    },
+  });
+
+  expect(config2).toEqual({
+    foo: [ "c", "d", "e" ],
+    bar: {
+      boo: [ "h", "i", "j" ],
+    },
+  });
 });
