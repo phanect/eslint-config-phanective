@@ -17,8 +17,7 @@ export default [
     files: [ "*" ],
 
     ignores: [
-      "tests/js/**",
-      "tests/ts/**",
+      "tests/fixtures/invalid/**",
     ],
     ...compat.config({
       parserOptions: {
