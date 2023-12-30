@@ -93,7 +93,6 @@ module.exports = {
     //
     // Off
     //
-    "import/no-unresolved": "off", // Not working other than Node or Webpack
     "no-console": "off",
 
     "jsdoc/require-jsdoc": "off",
