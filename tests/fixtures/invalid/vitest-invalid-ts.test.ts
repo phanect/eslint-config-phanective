@@ -1,5 +1,7 @@
 "use strict";
 
+import { expect, test, beforeEach, afterEach } from "vitest";
+
 beforeEach(() => {
   console.log("before");
 });
