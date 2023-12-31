@@ -23,6 +23,7 @@ console.log(
 );
 
 // aliasing `this` is allowed (consistent-this is disabled)
+/** @type { (callback: Function) => void } */
 function funcRequiresCallback(callback) {
   callback();
 }

@@ -23,7 +23,7 @@ console.log(
 );
 
 // aliasing `this` is allowed (@typescript-eslint/no-this-alias is disabled)
-function funcRequiresCallback(callback): void {
+function funcRequiresCallback(callback: Function): void {
   callback();
 }
 const self = this;
@@ -51,4 +51,4 @@ asyncFunctionWithoutAwait();
 function tetete<T>(arr: T[]): T[] {
   return arr;
 }
-tetete();
+tetete([]);
