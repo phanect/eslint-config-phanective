@@ -1,1 +1,1 @@
-console.log("CommonJS needs 'use strict' and it is forbidden in JSM");
+console.log("'use strict' is forbidden in JSM");
