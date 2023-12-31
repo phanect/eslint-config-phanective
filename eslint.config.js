@@ -16,16 +16,15 @@ export default [
   {
     files: [ "*" ],
 
-    ignores: [
-      "tests/fixtures/invalid/**",
-
-      "tests/configs.test.ts", // TODO Fix this file after ESLint 9 is released and flat config is GA.
-      "tests/testutils.ts" // TODO replace this file with @phanect/utils
-    ],
     ...compat.config({
       parserOptions: {
         project: join(__dirname, "tsconfig.json"),
       },
     })[0],
   },
-];
+].map(config => ({
+  ...config,
+  ignores: [
+    "tests/fixtures/invalid/**",
+  ],
+}));

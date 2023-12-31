@@ -1,6 +1,6 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import { plain } from "./plain.js";
-import { jsRule, tsRule } from "./overrides/lang-specific.js";
+import { jsConfigs, tsConfigs } from "./overrides/lang-specific.js";
 import { defaultConfigOptions, projectRoot } from "../utils.js";
 import type { Linter } from "eslint";
 import type { ConfigOptions } from "../types.js";
@@ -41,35 +41,47 @@ export const vue = ({ testLib, vueLang }: ConfigOptions = defaultConfigOptions):
       },
     }),
   ];
-  const vueTsRule: Linter.FlatConfig = {
-    ...tsRule,
-    files: [ "*.vue" ], // overwrite tsRule's `files` property, so place after `...tsRule`.
-    ...compat.config({
-      parser: "vue-eslint-parser", // overwrite tsRule's `parser` property, so place after `...tsRule`.
-      parserOptions: {
-        parser: "@typescript-eslint/parser",
-      },
-    })[0],
-  };
-  const vueJsRule: Linter.FlatConfig = {
-    ...jsRule,
-    files: [ "*.vue" ], // overwrite jsRule's `files` property, so place after `...jsRule`.
-    ...compat.config({
-      parser: "vue-eslint-parser",
-    })[0],
-  };
+  const vueTsConfigs: Linter.FlatConfig[] = [
+    ...tsConfigs(),
+    {
+      files: [ "*.vue" ], // overwrite tsRule's `files` property, so place after `...tsRule`.
+      ...compat.config({
+        parser: "vue-eslint-parser", // overwrite tsRule's `parser` property, so place after `...tsRule`.
+        parserOptions: {
+          parser: "@typescript-eslint/parser",
+        },
+      })[0],
+    }
+  ];
+  const vueJsConfigs: Linter.FlatConfig[] = [
+    ...jsConfigs(),
+    {
+      files: [ "*.vue" ], // overwrite jsRule's `files` property, so place after `...jsRule`.
+      ...compat.config({
+        parser: "vue-eslint-parser",
+      })[0],
+    }
+  ];
 
   if (vueLang === "ts" || vueLang === undefined) {
-    return [ ...configs, vueTsRule ];
+    return [ ...configs, ...vueTsConfigs ];
   } else if (vueLang === "js") {
-    return [ ...configs, vueJsRule ];
+    return [ ...configs, ...vueJsConfigs ];
   } else if (Array.isArray(vueLang)) {
-    const vueConfigs: Linter.FlatConfig[] = vueLang.map(({ files, lang }) => ({
-      files,
-      ...(lang === "ts" ? vueTsRule : vueJsRule),
-    }));
-
-    return [ ...configs, ...vueConfigs ];
+    return [
+      ...configs,
+      ...vueLang.map(({ files, lang }) =>
+        lang === "ts" ?
+          vueTsConfigs.map(config => ({
+            ...config,
+            files,
+          })) :
+          vueJsConfigs.map(config => ({
+            ...config,
+            files,
+          }))
+      ).flat(),
+    ];
   } else {
     throw new Error(`Unexpected option for vueLang: "${vueLang}"`);
   }

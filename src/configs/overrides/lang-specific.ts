@@ -25,30 +25,29 @@ const commonRulesJS: Linter.RulesRecord = {
   "require-await": "off",
 };
 
-export const jsRule = (): Linter.FlatConfig => ({
-  ...js.configs.recommended,
+export const jsConfigs = (): Linter.FlatConfig[] => [
+  js.configs.recommended,
   ...compat.config({
-    extends: [
-      "plugin:jsdoc/recommended",
-    ],
+    extends: [ "plugin:jsdoc/recommended" ],
     plugins: [ "jsdoc" ],
-  })[0],
+  }).map(config => ({
+    files: [ "*.js", "*.mjs", "*.cjs", "*.jsx" ],
+    ...config,
+  })),
+  {
+    files: [ "*.js", "*.mjs", "*.cjs", "*.jsx" ],
+    rules: {
+      ...commonRulesJS,
 
-  rules: {
-    ...commonRulesJS,
+      // This rule also disallows "use strict"; in module-based code including TypeScript.
+      // You can still add "use strict"; in each source TypeScript code,
+      // so I enable this rule only for JavaScript
+      strict: [ "error", "safe" ],
+    },
+  }
+];
 
-    // This rule also disallows "use strict"; in module-based code including TypeScript.
-    // You can still add "use strict"; in each source TypeScript code,
-    // so I enable this rule only for JavaScript
-    strict: [ "error", "safe" ],
-  },
-
-  files: [ "*.js", "*.mjs", "*.cjs", "*.jsx" ],
-});
-
-export const tsRule = (): Linter.FlatConfig => ({
-  files: [ "*.ts", "*.mts", "*.cts", "*.tsx" ],
-
+export const tsConfigs = (): Linter.FlatConfig[] => [
   ...compat.config({
     extends: [
       "plugin:@typescript-eslint/recommended",
@@ -57,33 +56,39 @@ export const tsRule = (): Linter.FlatConfig => ({
     ],
     plugins: [ "@typescript-eslint", "jsdoc" ],
     parser: "@typescript-eslint/parser",
-  })[0],
+  }).map(config => ({
+    files: [ "*.ts", "*.mts", "*.cts", "*.tsx" ],
+    ...config,
+  })),
+  {
+    files: [ "*.ts", "*.mts", "*.cts", "*.tsx" ],
 
-  rules: {
-    ...toTSRules(commonRulesJS),
+    rules: {
+      ...toTSRules(commonRulesJS),
 
-    //
-    // Errors
-    //
-    "@typescript-eslint/await-thenable": "error",
-    "@typescript-eslint/explicit-function-return-type": [ "error", { allowExpressions: true }],
+      //
+      // Errors
+      //
+      "@typescript-eslint/await-thenable": "error",
+      "@typescript-eslint/explicit-function-return-type": [ "error", { allowExpressions: true }],
 
-    //
-    // Warnings
-    //
-    "@typescript-eslint/adjacent-overload-signatures": "warn",
-    "@typescript-eslint/prefer-for-of": "warn",
-    "@typescript-eslint/prefer-nullish-coalescing": "warn",
-    "@typescript-eslint/prefer-optional-chain": "warn",
+      //
+      // Warnings
+      //
+      "@typescript-eslint/adjacent-overload-signatures": "warn",
+      "@typescript-eslint/prefer-for-of": "warn",
+      "@typescript-eslint/prefer-nullish-coalescing": "warn",
+      "@typescript-eslint/prefer-optional-chain": "warn",
 
-    //
-    // Off
-    //
-    "@typescript-eslint/indent": "off", // avoid conflict against editorconfig/indent
-    "@typescript-eslint/no-this-alias": "off",
+      //
+      // Off
+      //
+      "@typescript-eslint/indent": "off", // avoid conflict against editorconfig/indent
+      "@typescript-eslint/no-this-alias": "off",
 
-    // These rules may warn new ES syntax which is supported by TypeScript (e.g. import)
-    "node/no-unsupported-features/es-builtins": "off",
-    "node/no-unsupported-features/es-syntax": "off",
-  },
-});
+      // These rules may warn new ES syntax which is supported by TypeScript (e.g. import)
+      "node/no-unsupported-features/es-builtins": "off",
+      "node/no-unsupported-features/es-syntax": "off",
+    },
+  }
+];

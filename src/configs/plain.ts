@@ -1,6 +1,6 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import type { Linter } from "eslint";
-import { jsRule, tsRule } from "./overrides/lang-specific.js";
+import { jsConfigs, tsConfigs } from "./overrides/lang-specific.js";
 import { vitestWorkaroundConfig } from "./overrides/vitest-disable.js";
 import { defaultConfigOptions, projectRoot } from "../utils.js";
 import type { ConfigOptions } from "../types.js";
@@ -12,8 +12,8 @@ const compat = new FlatCompat({
 
 export const plain = ({ testLib }: ConfigOptions = defaultConfigOptions): Linter.FlatConfig[] => {
   const configs: Linter.FlatConfig[] = [
-    jsRule(),
-    tsRule(),
+    ...jsConfigs(),
+    ...tsConfigs(),
     ...compat.config({
       extends: [
         "plugin:editorconfig/noconflict",
@@ -29,6 +29,29 @@ export const plain = ({ testLib }: ConfigOptions = defaultConfigOptions): Linter
         "promise",
       ],
       ignorePatterns: [ "*.json", "*.json5" ],
+      rules: {
+        "document-write/no-document-write": "error",
+        "editorconfig/charset": "error",
+        "editorconfig/eol-last": "error",
+        "editorconfig/indent": [ "error", { SwitchCase: 1 }],
+        "editorconfig/linebreak-style": "error",
+        "editorconfig/no-trailing-spaces": "error",
+
+        //
+        // Warnings: JSDoc
+        // JSDoc rules should not be reported as errors but warnings
+        //
+        "jsdoc/check-examples": "warn",
+        "jsdoc/check-indentation": "warn",
+        "jsdoc/check-syntax": "warn",
+        "jsdoc/require-hyphen-before-param-description": "warn",
+
+        //
+        // Off
+        //
+        "jsdoc/require-jsdoc": "off",
+        "jsdoc/require-description-complete-sentence": "off",
+      }
     }),
     {
       files: [ "*" ],
@@ -67,22 +90,6 @@ export const plain = ({ testLib }: ConfigOptions = defaultConfigOptions): Linter
         }],
         "prefer-spread": "error",
 
-        "document-write/no-document-write": "error",
-        "editorconfig/charset": "error",
-        "editorconfig/eol-last": "error",
-        "editorconfig/indent": [ "error", { SwitchCase: 1 }],
-        "editorconfig/linebreak-style": "error",
-        "editorconfig/no-trailing-spaces": "error",
-
-        //
-        // Warnings: JSDoc
-        // JSDoc rules should not be reported as errors but warnings
-        //
-        "jsdoc/check-examples": "warn",
-        "jsdoc/check-indentation": "warn",
-        "jsdoc/check-syntax": "warn",
-        "jsdoc/require-hyphen-before-param-description": "warn",
-
         //
         // Warnings - styles
         // These are just a preference in coding style.
@@ -112,9 +119,6 @@ export const plain = ({ testLib }: ConfigOptions = defaultConfigOptions): Linter
         // Off
         //
         "no-console": "off",
-
-        "jsdoc/require-jsdoc": "off",
-        "jsdoc/require-description-complete-sentence": "off",
       },
     },
     {
@@ -129,6 +133,7 @@ export const plain = ({ testLib }: ConfigOptions = defaultConfigOptions): Linter
     ...compat.config({
       extends: "plugin:jsonc/base",
       parser: "jsonc-eslint-parser",
+      plugins: [ "jsonc" ],
       rules: {
         "jsonc/array-bracket-spacing": [ "error", "always", {
           objectsInArrays: false,
@@ -152,12 +157,16 @@ export const plain = ({ testLib }: ConfigOptions = defaultConfigOptions): Linter
     })),
     ...compat.config({
       extends: "plugin:jsonc/recommended-with-json",
+      parser: "jsonc-eslint-parser",
+      plugins: [ "jsonc" ],
     }).map(config => ({
       files: [ "*.json" ],
       ...config
     })),
     ...compat.config({
       extends: "plugin:jsonc/recommended-with-json5",
+      parser: "jsonc-eslint-parser",
+      plugins: [ "jsonc" ],
       rules: {
         "jsonc/comma-dangle": [ "error", {
           arrays: "always-multiline",
@@ -167,6 +176,16 @@ export const plain = ({ testLib }: ConfigOptions = defaultConfigOptions): Linter
       },
     }).map(config => ({
       files: [ "*.json5" ],
+      ...config
+    })),
+    ...compat.config({
+      parser: "jsonc-eslint-parser",
+      plugins: [ "jsonc" ],
+      rules: {
+        "jsonc/no-comments": "off",
+      },
+    }).map(config => ({
+      files: [ "tsconfig.json" ],
       ...config
     })),
     vitestWorkaroundConfig,
