@@ -10,6 +10,29 @@ const compat = new FlatCompat({
 });
 
 export const plain = ({ testLib }: ConfigOptions = defaultConfigOptions): Linter.FlatConfig[] => {
+  const importSettings = {
+    "import/resolver": {
+      node: {
+        extensions: [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx",
+          // Workaround for Vitest
+          // See https://blog.kubosho.com/entries/eslint-plugin-import-error-on-vitest-configuration-file
+          ".d.ts",
+          ".vue",
+          ".json"
+        ],
+      },
+      typescript: true,
+    },
+    "import/parsers": {
+      espree: [ ".js", ".cjs", ".mjs", ".jsx" ],
+      "@typescript-eslint/parser": [ ".ts" ],
+    },
+  };
+
   const configs: Linter.FlatConfig[] = [
     jsRule(),
     tsRule(),
@@ -28,6 +51,7 @@ export const plain = ({ testLib }: ConfigOptions = defaultConfigOptions): Linter
         "promise",
       ],
       ignorePatterns: [ "*.json", "*.json5" ],
+      settings: importSettings,
     }),
     {
       files: [ "*" ],
@@ -124,6 +148,7 @@ export const plain = ({ testLib }: ConfigOptions = defaultConfigOptions): Linter
       rules: {
         "import/no-unresolved": [ "error", { commonjs: true }],
       },
+      settings: importSettings,
     },
     ...compat.config({
       extends: "plugin:jsonc/base",
