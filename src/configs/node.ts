@@ -31,4 +31,24 @@ export const node = (options: ConfigOptions = defaultConfigOptions): Linter.Flat
       "node/no-process-exit": "off",
     },
   }),
+  {
+    files: [
+      // config files
+      "*.config.*",
+      ".eslintrc",
+      ".eslintrc.*",
+      // build scripts
+      "script/*",
+      "scripts/*",
+      // testcases
+      "test/*",
+      "tests/*",
+      "*.test.*",
+      "*.spec.*",
+    ],
+    rules: {
+      "node/no-unpublished-import": "off",
+      "node/no-unpublished-require": "off",
+    },
+  },
 ];
