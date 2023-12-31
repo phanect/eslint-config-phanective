@@ -1,7 +1,7 @@
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { FlatCompat } from "@eslint/eslintrc";
-import { node } from "./dist/eslint.mjs";
+import { node, vitestWorkaroundConfig } from "./dist/eslint.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -21,6 +21,12 @@ export default [
         project: join(__dirname, "tsconfig.json"),
       },
     })[0],
+  },
+  {
+    ...vitestWorkaroundConfig,
+    files: [
+      "tests/fixtures/**/vitest-*.test.*",
+    ],
   },
 ].map(config => ({
   ...config,

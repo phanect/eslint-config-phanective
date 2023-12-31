@@ -4,8 +4,8 @@ import type { Linter } from "eslint";
 // do not work properly with Vitest. Disable those rules for Vitest-related files.
 export const vitestWorkaroundConfig: Linter.FlatConfig = {
   files: [
-    "vitest.config.*",
-    "tests/fixtures/**/vitest-*.test.*",
+    "**/vitest.config.*",
+    "**/*.test.*"
   ],
   rules: {
     "node/no-missing-import": "off",

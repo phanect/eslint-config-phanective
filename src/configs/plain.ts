@@ -1,7 +1,7 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import type { Linter } from "eslint";
 import { jsConfigs, tsConfigs } from "./overrides/lang-specific.js";
-import { vitestWorkaroundConfig } from "./overrides/vitest-disable.js";
+import { vitestWorkaroundConfig } from "./vitest-workaround.js";
 import { defaultConfigOptions, projectRoot } from "../utils.js";
 import type { ConfigOptions } from "../types.js";
 
