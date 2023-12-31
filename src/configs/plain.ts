@@ -52,9 +52,12 @@ export const plain = ({ testLib }: ConfigOptions = defaultConfigOptions): Linter
         "jsdoc/require-jsdoc": "off",
         "jsdoc/require-description-complete-sentence": "off",
       }
-    }),
+    }).map(config => ({
+      ...config,
+      files: [ "*.js", "*.mjs", "*.cjs", "*.jsx", "*.ts", "*.mts", "*.cts", "*.tsx", "*.vue" ],
+    })),
     {
-      files: [ "*" ],
+      files: [ "*.js", "*.mjs", "*.cjs", "*.jsx", "*.ts", "*.mts", "*.cts", "*.tsx", "*.vue" ],
       ignores: [ "*.json", "*.json5" ],
 
       languageOptions: {
