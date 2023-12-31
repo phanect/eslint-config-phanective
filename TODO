@@ -1,0 +1,5 @@
+helper.ts → utils.ts
+editorconfig 動いてる?
+json ファイル lint されてる?
+
+@ts-ignore 全部外してみる

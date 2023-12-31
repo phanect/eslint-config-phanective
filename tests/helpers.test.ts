@@ -10,7 +10,7 @@ test("toTSRules", () => {
   });
 
   expect(result).toEqual({
-    "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-use-before-define": "error",
     "@typescript-eslint/require-await": "error",
     "@typescript-eslint/semi": [ "error", "always" ],
