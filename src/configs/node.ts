@@ -19,14 +19,7 @@ export const node = (options: ConfigOptions = defaultConfigOptions): Linter.Flat
       // Errors
       //
       "node/no-missing-import": [ "error", {
-        tryExtensions: [
-          ".js",
-          ".ts",
-          ".json",
-          // Workaround for Vitest
-          // Maybe this is a similar issue to https://blog.kubosho.com/entries/eslint-plugin-import-error-on-vitest-configuration-file ?
-          ".d.ts",
-        ],
+        tryExtensions: [ ".js", ".ts", ".json" ], // Add .ts
       }],
 
       //
