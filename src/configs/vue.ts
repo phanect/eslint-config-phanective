@@ -9,7 +9,7 @@ const compat = new FlatCompat({
   resolvePluginsRelativeTo: projectRoot,
 });
 
-const vue: Linter.FlatConfig[] = compat.config({
+const vue = (): Linter.FlatConfig[] => compat.config({
   extends: [ "plugin:vue/vue3-recommended" ],
   env: {
     browser: true,
@@ -37,9 +37,9 @@ const vue: Linter.FlatConfig[] = compat.config({
   },
 });
 
-export const vueJS: Linter.FlatConfig[] = [
-  ...plain,
-  ...vue,
+export const vueJS = (): Linter.FlatConfig[] => [
+  ...plain(),
+  ...vue(),
   {
     ...jsRule,
     files: [ "*.vue" ], // overwrite jsRule's `files` property, so place after `...jsRule`.
@@ -49,9 +49,9 @@ export const vueJS: Linter.FlatConfig[] = [
   },
 ];
 
-export const vueTS: Linter.FlatConfig[] = [
-  ...plain,
-  ...vue,
+export const vueTS = (): Linter.FlatConfig[] => [
+  ...plain(),
+  ...vue(),
   {
     ...tsRule,
     files: [ "*.vue" ], // overwrite tsRule's `files` property, so place after `...tsRule`.

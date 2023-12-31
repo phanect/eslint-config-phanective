@@ -8,8 +8,8 @@ const compat = new FlatCompat({
   resolvePluginsRelativeTo: projectRoot,
 });
 
-export const react: Linter.FlatConfig[] = [
-  ...plain,
+export const react = (): Linter.FlatConfig[] => [
+  ...plain(),
   ...compat.config({
     extends: [
       "plugin:react/recommended",

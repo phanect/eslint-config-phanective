@@ -8,18 +8,18 @@ const compat = new FlatCompat({
   resolvePluginsRelativeTo: projectRoot,
 });
 
-const nuxt: Linter.FlatConfig[] = compat.config({
+const nuxt = (): Linter.FlatConfig[] => compat.config({
   extends: [ "@nuxt/eslint-config" ],
 });
 
-export const nuxtJS: Linter.FlatConfig[] = [
-  // plain is not required here because it is imported in `vueJS`
-  ...vueJS,
-  ...nuxt,
+export const nuxtJS = (): Linter.FlatConfig[] => [
+  // plain is not required here because it is imported in `vueJS()`
+  ...vueJS(),
+  ...nuxt(),
 ];
 
-export const nuxtTS: Linter.FlatConfig[] =  [
-  // plain is not required here because it is imported in `vueTS`
-  ...vueTS,
-  ...nuxt,
+export const nuxtTS = (): Linter.FlatConfig[] => [
+  // plain is not required here because it is imported in `vueTS()`
+  ...vueTS(),
+  ...nuxt(),
 ];

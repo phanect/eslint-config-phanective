@@ -25,7 +25,7 @@ const commonRulesJS: Linter.RulesRecord = {
   "require-await": "off",
 };
 
-export const jsRule: Linter.FlatConfig = {
+export const jsRule = (): Linter.FlatConfig => ({
   ...js.configs.recommended,
   ...compat.config({
     extends: [
@@ -44,9 +44,9 @@ export const jsRule: Linter.FlatConfig = {
   },
 
   files: [ "*.js", "*.mjs", "*.cjs", "*.jsx" ],
-};
+});
 
-export const tsRule: Linter.FlatConfig = {
+export const tsRule = (): Linter.FlatConfig => ({
   files: [ "*.ts", "*.mts", "*.cts", "*.tsx" ],
 
   ...compat.config({
@@ -89,4 +89,4 @@ export const tsRule: Linter.FlatConfig = {
     "node/no-unsupported-features/es-builtins": "off",
     "node/no-unsupported-features/es-syntax": "off",
   },
-};
+});

@@ -12,7 +12,7 @@ const compat = new FlatCompat({
 
 /** @type { import("eslint").Linter.FlatConfig[] } */
 export default [
-  ...node,
+  ...node(),
   {
     files: [ "*" ],
 

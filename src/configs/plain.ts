@@ -8,9 +8,9 @@ const compat = new FlatCompat({
   resolvePluginsRelativeTo: projectRoot,
 });
 
-export const plain: Linter.FlatConfig[] = [
-  jsRule,
-  tsRule,
+export const plain = (): Linter.FlatConfig[] => [
+  jsRule(),
+  tsRule(),
   ...compat.config({
     extends: [
       "plugin:editorconfig/noconflict",

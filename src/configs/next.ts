@@ -8,8 +8,8 @@ const compat = new FlatCompat({
   resolvePluginsRelativeTo: projectRoot,
 });
 
-export const next: Linter.FlatConfig[] = [
+export const next = (): Linter.FlatConfig[] => [
   // plain is not required here because it is imported in `react()`
-  ...react,
+  ...react(),
   ...compat.extends("next/core-web-vitals"),
 ];

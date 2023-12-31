@@ -8,8 +8,8 @@ const compat = new FlatCompat({
   resolvePluginsRelativeTo: projectRoot,
 });
 
-export const node: Linter.FlatConfig[] = [
-  ...plain,
+export const node = (): Linter.FlatConfig[] => [
+  ...plain(),
   ...compat.config({
     extends: [ "plugin:node/recommended" ],
     plugins: [ "node" ],
