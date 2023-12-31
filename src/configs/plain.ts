@@ -121,6 +121,9 @@ export const plain = ({ testLib }: ConfigOptions = defaultConfigOptions): Linter
       languageOptions: {
         sourceType: "commonjs",
       },
+      rules: {
+        "import/no-unresolved": [ "error", { commonjs: true }],
+      },
     },
     ...compat.config({
       extends: "plugin:jsonc/base",

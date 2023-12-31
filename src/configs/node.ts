@@ -18,8 +18,6 @@ export const node = (options: ConfigOptions = defaultConfigOptions): Linter.Flat
       //
       // Errors
       //
-      // While it is disabled on base config, it is enabled here since it works on Node
-      "import/no-unresolved": [ "error", { commonjs: true }],
       "node/no-missing-import": [ "error", {
         tryExtensions: [ ".js", ".ts", ".json" ], // Add .ts
       }],
