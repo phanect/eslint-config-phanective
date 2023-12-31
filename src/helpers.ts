@@ -1,6 +1,7 @@
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Linter } from "eslint";
+import type { ConfigOptions } from "./types.js";
 
 export const toTSRules = (jsRules: Linter.RulesRecord): Linter.RulesRecord => {
   const tsRules: Linter.RulesRecord = {};
@@ -10,6 +11,10 @@ export const toTSRules = (jsRules: Linter.RulesRecord): Linter.RulesRecord => {
   }
 
   return tsRules;
+};
+
+export const defaultConfigOptions: ConfigOptions = {
+  vueLang: "ts",
 };
 
 // If you want to get project root on e.g. src/configs/overrides/lang-spacific.ts,
