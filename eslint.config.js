@@ -26,5 +26,8 @@ export default [
   ...config,
   ignores: [
     "tests/fixtures/invalid/**",
+
+    "tests/configs.test.ts", // TODO Fix this file after ESLint 9 is released and flat config is GA.
+    "tests/testutils.ts" // TODO replace this file with @phanect/utils
   ],
 }));
