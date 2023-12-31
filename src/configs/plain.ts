@@ -1,6 +1,7 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import type { Linter } from "eslint";
 import { jsRule, tsRule } from "./overrides/lang-specific.js";
+import { vitestWorkaroundConfig } from "./overrides/vitest-disable.js";
 import { defaultConfigOptions, projectRoot } from "../utils.js";
 import type { ConfigOptions } from "../types.js";
 
@@ -168,6 +169,7 @@ export const plain = ({ testLib }: ConfigOptions = defaultConfigOptions): Linter
       files: [ "*.json5" ],
       ...config
     })),
+    vitestWorkaroundConfig,
   ];
 
   const testFiles = [
