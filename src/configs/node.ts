@@ -19,7 +19,7 @@ export const node = (options: ConfigOptions = defaultConfigOptions): Linter.Flat
       // Errors
       //
       "node/no-missing-import": [ "error", {
-        tryExtensions: [ ".js", ".ts", ".json" ], // Add .ts
+        tryExtensions: [ ".js", ".mjs", ".cjs", ".jsx", ".ts", ".mts", ".cts", ".tsx", ".json" ],
       }],
 
       //
