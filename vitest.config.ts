@@ -6,6 +6,9 @@ export default defineConfig({
     exclude: [
       "./tests/fixtures/**/*",
 
+      "./tests/configs.test.ts", // TODO Fix this file after ESLint 9 is released and flat config is GA.
+      "./tests/testutils.ts", // TODO replace this file with @phanect/utils
+
       // Default exclusion list
       // See https://vitest.dev/config/#exclude
       "**/node_modules/**",

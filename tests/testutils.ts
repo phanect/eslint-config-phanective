@@ -1,3 +1,4 @@
+// TODO migrate to sortObjects() available in @phanect/utils
 /**
  * Sort array of the objects by the same order.
  * @param {object[]} objects - Aarray of objects.

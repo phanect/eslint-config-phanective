@@ -1,3 +1,4 @@
+// TODO Fix tests in this file when ESLint 9 is released and flat config is GA.
 import { ESLint } from "eslint";
 import { join } from "path";
 import { fileURLToPath } from "node:url";
