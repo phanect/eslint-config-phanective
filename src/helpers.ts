@@ -14,6 +14,7 @@ export const toTSRules = (jsRules: Linter.RulesRecord): Linter.RulesRecord => {
 };
 
 export const defaultConfigOptions: ConfigOptions = {
+  testLib: "vitest",
   vueLang: "ts",
 };
 

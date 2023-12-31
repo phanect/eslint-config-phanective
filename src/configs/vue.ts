@@ -10,9 +10,9 @@ const compat = new FlatCompat({
   resolvePluginsRelativeTo: projectRoot,
 });
 
-export const vue = ({ vueLang }: ConfigOptions = defaultConfigOptions): Linter.FlatConfig[] => {
+export const vue = ({ testLib, vueLang }: ConfigOptions = defaultConfigOptions): Linter.FlatConfig[] => {
   const configs: Linter.FlatConfig[] = [
-    ...plain(),
+    ...plain({ testLib }),
     ...compat.config({
       extends: [ "plugin:vue/vue3-recommended" ],
       env: {

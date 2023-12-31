@@ -1,15 +1,16 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import { plain } from "./plain.js";
-import { projectRoot } from "../helpers.js";
+import { defaultConfigOptions, projectRoot } from "../helpers.js";
 import type { Linter } from "eslint";
+import type { ConfigOptions } from "../types.js";
 
 const compat = new FlatCompat({
   baseDirectory: projectRoot,
   resolvePluginsRelativeTo: projectRoot,
 });
 
-export const node = (): Linter.FlatConfig[] => [
-  ...plain(),
+export const node = (options: ConfigOptions = defaultConfigOptions): Linter.FlatConfig[] => [
+  ...plain(options),
   ...compat.config({
     extends: [ "plugin:node/recommended" ],
     plugins: [ "node" ],
