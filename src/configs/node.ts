@@ -1,6 +1,6 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import { plain } from "./plain.js";
-import { defaultConfigOptions, projectRoot } from "../helpers.js";
+import { defaultConfigOptions, projectRoot } from "../utils.js";
 import type { Linter } from "eslint";
 import type { ConfigOptions } from "../types.js";
 

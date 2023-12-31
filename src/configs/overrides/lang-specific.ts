@@ -1,6 +1,6 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
-import { toTSRules, projectRoot } from "../../helpers.js";
+import { toTSRules, projectRoot } from "../../utils.js";
 import type { Linter } from "eslint";
 
 const compat = new FlatCompat({
