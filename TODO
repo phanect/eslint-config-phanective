@@ -1,0 +1,28 @@
+eslinyt-plugin-editorconfig 動いてる?
+json ファイル lint されてる?
+
+@ts-ignore 全部外してみる
+
+
+
+jsdoc/check-example を off にする
+"jsdoc/check-examples": "off", // temporary disabled because it is incompatible with ESLint 8
+
+refactor: extend Vue config to create configs for Nuxt
+
+*.cjs で sourceType: "commonjs" になっているか確認
+
+deepmerge を dependencies に移し、残りの mergeConfigs を置き換え [DONE?]
+依存プラグインが勝手にメジャーアップグレードされないようにする
+
+
+
+
+profiles の chore: set up ESLint を反映
+svelte 用 config
+
+eslint-plugin-node を eslint-plugin-n に置き換え
+
+
+
+monorepo 化
