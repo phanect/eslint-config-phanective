@@ -6,7 +6,7 @@ tests/
 .eslintrc.js
 .gitattributes
 .gitignore
-jest.config.js
+vitest.config.js
 rwt.example.json
 rwt.json
 *.config.*
