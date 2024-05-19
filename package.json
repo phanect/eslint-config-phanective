@@ -3,7 +3,19 @@
   "version": "2024.5.27",
   "description": "Personal ESLint configuration for Jumpei Ogawa (@phanect)",
   "type": "module",
-  "main": "./plain.json",
+  "main": "./dist/plain.json",
+  "exports": {
+    "require": {
+      "default": "./dist/plain.json",
+      "node.json": "./dist/node.json",
+      "react.json": "./dist/react.json",
+      "next.json": "./dist/next.json",
+      "vue+js.json": "./dist/vue+js.json",
+      "vue+ts.json": "./dist/vue+ts.json",
+      "nuxt+js.json": "./dist/nuxt+js.json",
+      "nuxt+ts.json": "./dist/nuxt+ts.json"
+    }
+  },
   "scripts": {
     "build": "esno ./scripts/build.ts",
     "test": "npm run build && vitest run",
