@@ -2,7 +2,7 @@
 
 const { join } = require("node:path");
 const deepmerge = require("deepmerge");
-const config = require("./node.json");
+const config = require("./dist/node.json");
 
 module.exports = deepmerge(config, {
   root: true,

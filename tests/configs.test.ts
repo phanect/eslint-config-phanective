@@ -4,9 +4,9 @@ import { join } from "path";
 import { fileURLToPath } from "node:url";
 import deepmerge from "deepmerge";
 
-import plainConfig from "../plain.json";
-import nodeConfig from "../node.json";
-import jestConfig from "../jest.json";
+import plainConfig from "../dist/plain.json";
+import nodeConfig from "../dist/node.json";
+import jestConfig from "../dist/jest.json";
 import { sortObjects } from "@phanect/utils";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
