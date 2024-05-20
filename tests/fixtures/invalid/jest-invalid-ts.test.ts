@@ -1,5 +1,3 @@
-"use strict";
-
 import { test, expect, afterEach, beforeEach } from "vitest";
 
 beforeEach(() => {

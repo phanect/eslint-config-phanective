@@ -1,5 +1,3 @@
-"use strict";
-
 const foo = "bar";
 const hoge = "fuga";
 

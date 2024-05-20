@@ -1,6 +1,4 @@
-"use strict";
-
-const { expect, test, beforeEach, afterEach } = require("vitest");
+import { expect, test, beforeEach, afterEach } from "vitest";
 
 beforeEach(() => {
   console.log("before");

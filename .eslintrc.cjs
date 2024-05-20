@@ -15,6 +15,5 @@ module.exports = deepmerge(config, {
   },
   ignorePatterns: [
     "tests/fixtures/invalid/*",
-    "tests/fixtures/valid/*.js", // TODO ignore until default sourceType is changed to "module"
   ],
 });
