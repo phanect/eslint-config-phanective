@@ -1,16 +1,16 @@
-import { mkdir, writeFile } from "fs/promises";
-import { join } from "path";
+import { mkdir, writeFile } from "node:fs/promises";
+import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import plain from "../src/configs/plain.ts";
-import node from "../src/configs/node.ts";
-import react from "../src/configs/react.ts";
 import next from "../src/configs/next.ts";
+import node from "../src/configs/node.ts";
+import nuxtJS from "../src/configs/nuxt+js.ts";
+import nuxtTS from "../src/configs/nuxt+ts.ts";
+import plain from "../src/configs/plain.ts";
+import react from "../src/configs/react.ts";
 import svelte from "../src/configs/svelte.ts";
 import vueJS from "../src/configs/vue+js.ts";
 import vueTS from "../src/configs/vue+ts.ts";
-import nuxtJS from "../src/configs/nuxt+js.ts";
-import nuxtTS from "../src/configs/nuxt+ts.ts";
 import withDeps from "../src/configs/with-deps.ts";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));

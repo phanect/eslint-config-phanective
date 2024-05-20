@@ -1,12 +1,12 @@
-import { test, expect } from "vitest";
-import { ESLint, type Linter } from "eslint";
-import { join } from "path";
+import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import deepmerge from "deepmerge";
-
-import plainConfig from "../plain.json";
-import nodeConfig from "../node.json";
 import { sortObjects } from "@phanect/utils";
+import deepmerge from "deepmerge";
+import { ESLint, type Linter } from "eslint";
+import { test, expect } from "vitest";
+
+import nodeConfig from "../node.json";
+import plainConfig from "../plain.json";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
