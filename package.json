@@ -28,7 +28,7 @@
     "eslint-config-next": "latest",
     "eslint-plugin-document-write": "latest",
     "eslint-plugin-editorconfig": "latest",
-    "eslint-plugin-import": "latest",
+    "eslint-plugin-import-x": "^0.5.0",
     "eslint-plugin-jest": "latest",
     "eslint-plugin-jsdoc": "latest",
     "eslint-plugin-jsonc": "latest",

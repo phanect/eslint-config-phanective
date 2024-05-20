@@ -5,8 +5,7 @@ const plain: Linter.Config = {
   extends: [
     "plugin:editorconfig/noconflict",
     "plugin:promise/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
+    "plugin:import-x/recommended",
   ],
 
   env: {

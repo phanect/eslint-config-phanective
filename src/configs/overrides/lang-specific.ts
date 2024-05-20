@@ -57,7 +57,7 @@ export const jsRules: Linter.Config = {
 export const tsRules: Linter.Config = {
   extends: [
     "plugin:@typescript-eslint/recommended",
-    "plugin:import/typescript",
+    "plugin:import-x/typescript",
     "plugin:jsdoc/recommended-typescript",
   ],
   parser: "@typescript-eslint/parser",
