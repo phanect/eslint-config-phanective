@@ -43,7 +43,6 @@ export default deepmerge(plain, {
         // Duplicate of import-x/no-unresolved
         "n/no-missing-import": "off",
 
-        "no-process-exit": "off",
         "n/no-process-exit": "off",
       },
     },
