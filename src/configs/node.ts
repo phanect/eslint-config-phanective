@@ -44,6 +44,10 @@ export default deepmerge(plain, {
         "n/no-missing-import": "off",
 
         "n/no-process-exit": "off",
+
+        // Only enable these rules on `phanective/with-deps` ruleset
+        "n/no-unpublished-import": "off",
+        "n/no-unpublished-require": "off",
       },
     },
   ],
