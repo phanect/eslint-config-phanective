@@ -61,6 +61,8 @@ Supported configs:
 - phanective/vue+ts (Vue 3)
 - phanective/nuxt+js (Nuxt 3)
 - phanective/nuxt+ts (Nuxt 3)
+- phanective/with-deps
+  - Use this rules in addition to the above rules if the project depends on package.json's `dependencies` on production i.e. npm packages and backend Node.js app without bundling.
 
 Test with realworld projects
 ----------------------------
