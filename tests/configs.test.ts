@@ -31,6 +31,8 @@ const tsOpts: ESLint.Options = {
 };
 
 test("js - valid", async () => {
+  expect.hasAssertions();
+
   const eslint = new ESLint(jsOpts);
   const results = await eslint.lintFiles(join(__dirname, "fixtures/valid/valid-js.js"));
 

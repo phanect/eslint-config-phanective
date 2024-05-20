@@ -2,6 +2,8 @@ import { test, expect } from "vitest";
 import { toTSRules } from "../src/utils.ts";
 
 test("toTSRules", () => {
+  expect.hasAssertions();
+
   const result = toTSRules({
     "no-unused-vars": "error",
     "no-use-before-define": "error",
