@@ -398,7 +398,7 @@ test("ts - invalid", async () => {
 });
 
 for (const lang of [ "js", "ts" ]) {
-  const jestOpts: ESLint.Options = {
+  const vitestOpts: ESLint.Options = {
     baseConfig: deepmerge(plainConfig as unknown as Linter.Config, lang === "ts" ? {
       parserOptions: {
         project: join(__dirname, "fixtures/tsconfig.json"),
@@ -407,9 +407,9 @@ for (const lang of [ "js", "ts" ]) {
     useEslintrc: false,
   };
 
-  test.skip(`jest - ${lang} - valid`, async () => {
-    const eslint = new ESLint(jestOpts);
-    const results = await eslint.lintFiles(join(__dirname, `fixtures/valid/jest-valid-${lang}.test.${lang}`));
+  test(`vitest - ${lang} - valid`, async () => {
+    const eslint = new ESLint(vitestOpts);
+    const results = await eslint.lintFiles(join(__dirname, `fixtures/valid/valid-${lang}.test.${lang}`));
 
     expect(results[0].messages).toEqual([]);
     expect(results).toHaveLength(1);
@@ -417,9 +417,9 @@ for (const lang of [ "js", "ts" ]) {
     expect(results[0].warningCount).toBe(0);
   });
 
-  test.skip(`jest - ${lang} - invalid`, async () => {
-    const eslint = new ESLint(jestOpts);
-    const results = await eslint.lintFiles(join(__dirname, `fixtures/invalid/jest-invalid-${lang}.test.${lang}`));
+  test(`vitest - ${lang} - invalid`, async () => {
+    const eslint = new ESLint(vitestOpts);
+    const results = await eslint.lintFiles(join(__dirname, `fixtures/invalid/invalid-${lang}.test.${lang}`));
 
     expect(results[0].messages).toEqual([
       {
@@ -430,7 +430,7 @@ for (const lang of [ "js", "ts" ]) {
         message: "Disabled test",
         messageId: "disabledTest",
         nodeType: "CallExpression",
-        ruleId: "jest/no-disabled-tests",
+        ruleId: "vitest/no-disabled-tests",
         severity: 2,
       },
       {
@@ -441,7 +441,7 @@ for (const lang of [ "js", "ts" ]) {
         message: "Unexpected focused test",
         messageId: "focusedTest",
         nodeType: "Identifier",
-        ruleId: "jest/no-focused-tests",
+        ruleId: "vitest/no-focused-tests",
         severity: 2,
         suggestions: [{
           desc: "Remove focus from test",
@@ -463,7 +463,7 @@ for (const lang of [ "js", "ts" ]) {
         message: "Test title is used multiple times in the same describe block",
         messageId: "multipleTestTitle",
         nodeType: "Literal",
-        ruleId: "jest/no-identical-title",
+        ruleId: "vitest/no-identical-title",
         severity: 2,
       },
       {
@@ -481,7 +481,7 @@ for (const lang of [ "js", "ts" ]) {
         message: "Use toHaveLength() instead",
         messageId: "useToHaveLength",
         nodeType: "Identifier",
-        ruleId: "jest/prefer-to-have-length",
+        ruleId: "vitest/prefer-to-have-length",
         severity: 1,
       },
       {
