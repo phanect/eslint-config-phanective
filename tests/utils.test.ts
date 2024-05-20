@@ -9,7 +9,7 @@ test("toTSRules", () => {
     semi: [ "error", "always" ],
   });
 
-  expect(result).toEqual({
+  expect(result).toStrictEqual({
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-use-before-define": "error",
     "@typescript-eslint/require-await": "error",
