@@ -54,6 +54,8 @@ const plain: Linter.Config = {
     "editorconfig/linebreak-style": "error",
     "editorconfig/no-trailing-spaces": "error",
     "import-x/no-unresolved": [ "error", { ignore: [ "vitest/config" ]}],
+    "promise/prefer-await-to-callbacks": "error",
+    "promise/prefer-await-to-then": "error",
 
     //
     // Warnings - styles
@@ -79,6 +81,9 @@ const plain: Linter.Config = {
     "space-in-parens": [ "warn", "never" ],
     "spaced-comment": [ "warn", "always" ],
     "switch-colon-spacing": [ "warn", { before: false, after: true }],
+
+    // Require file extensions in `import`s
+    "import-x/extensions": [ "warn", "always", { ignorePackages: true }],
 
     //
     // Off
@@ -124,6 +129,7 @@ const plain: Linter.Config = {
         // Errors
         //
         "vitest/no-disabled-tests": "error",
+        "vitest/no-focused-tests": "error",
         "vitest/expect-expect": [ "error", {
           assertFunctionNames: [ "expect", "ok" ],
         }],
@@ -131,6 +137,7 @@ const plain: Linter.Config = {
         //
         // Warnings - styles
         //
+        "vitest/prefer-lowercase-title": [ "warn", { ignore: [ "describe", "test" ]}],
         "vitest/prefer-to-have-length": "warn",
 
         //

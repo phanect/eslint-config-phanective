@@ -23,6 +23,27 @@ const prefixRequiredRules: Linter.RulesRecord = {
  */
 const commonRules: Linter.RulesRecord = {
   //
+  // Errors
+  //
+
+  // Declare again to avoid to be overwritten by `plugin:import-x/typescript`
+  "import-x/order": [ "warn", {
+    alphabetize: {
+      order: "asc",
+      orderImportKind: "asc",
+    },
+    warnOnUnassignedImports: true,
+    groups: [
+      "builtin",
+      "external",
+      "internal",
+      [ "parent", "sibling", "index" ],
+      "object",
+      "type",
+    ],
+  }],
+
+  //
   // Warnings: JSDoc
   // JSDoc rules should not be reported as errors but warnings
   //

@@ -22,6 +22,7 @@ console.log(
   "Very very very very very very very long argument which requires line break"
 );
 
+/* eslint-disable promise/prefer-await-to-callbacks */
 // aliasing `this` is allowed (@typescript-eslint/no-this-alias is disabled)
 function funcRequiresCallback(callback: () => void): void {
   callback();
@@ -30,6 +31,7 @@ const self = this;
 funcRequiresCallback(() => {
   console.log(self);
 });
+/* eslint-enable promise/prefer-await-to-callbacks */
 
 // require-await is disabled
 async function asyncFunctionWithoutAwait(): Promise<void> {

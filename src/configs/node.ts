@@ -37,6 +37,25 @@ export default deepmerge(plain, {
       files: [ "**/*" ],
       rules: {
         //
+        // Errors
+        //
+
+        // Use global one for standard JavaScript APIs.
+        "n/prefer-global/console": "error",
+        "n/prefer-global/text-decoder": "error",
+        "n/prefer-global/text-encoder": "error",
+        "n/prefer-global/url": "error",
+        "n/prefer-global/url-search-params": "error",
+
+        // Import or require Node.js-specific APIs.
+        "n/prefer-global/buffer": [ "error", "never" ],
+        "n/prefer-global/process": [ "error", "never" ],
+
+        "n/prefer-node-protocol": "error", // Prefer `import { ... } from "node:fs"` to `"fs"`
+        "n/prefer-promises/dns": "error",
+        "n/prefer-promises/fs": "error",
+
+        //
         // Off
         //
 
