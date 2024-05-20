@@ -53,6 +53,7 @@ const plain: Linter.Config = {
     "editorconfig/indent": [ "error", { SwitchCase: 1 }],
     "editorconfig/linebreak-style": "error",
     "editorconfig/no-trailing-spaces": "error",
+    "import-x/no-unresolved": [ "error", { ignore: [ "vitest/config" ]}],
 
     //
     // Warnings - styles
@@ -137,6 +138,12 @@ const plain: Linter.Config = {
       },
     },
   ],
+  settings: {
+    "import-x/ignore": [
+      "node_modules",
+      "vitest", // not working with import-x/named
+    ],
+  },
 } as const;
 
 export default plain;
