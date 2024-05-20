@@ -81,6 +81,15 @@ const plain: Linter.Config = {
     "promise/prefer-await-to-then": "error",
 
     //
+    // Warnings: JSDoc
+    // JSDoc rules should not be reported as errors but warnings
+    //
+    "jsdoc/check-examples": "off", // temporary disabled because it is incompatible with ESLint 8
+    "jsdoc/check-indentation": "warn",
+    "jsdoc/check-syntax": "warn",
+    "jsdoc/require-hyphen-before-param-description": "warn",
+
+    //
     // Warnings - styles
     // These are just a preference in coding style.
     // Following rules doesn't reduce quality or readability
