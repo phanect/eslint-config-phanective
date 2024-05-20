@@ -44,8 +44,8 @@ asyncFunctionWithoutAwait();
 // @template tag is allowed in JSDoc
 /**
  * Sample function.
- * @param {T[]} arr - The argument.
- * @returns {T[]} - The return value.
+ * @param arr - The argument.
+ * @returns The return value.
  * @template T
  */
 function tetete<T>(arr: T[]): T[] {
