@@ -14,6 +14,20 @@ const plain: Linter.Config = {
   parserOptions: {
     ecmaVersion: 2022,
     sourceType: "module",
+    extraFileExtensions: [
+      ".js",
+      ".mjs",
+      ".cjs",
+      ".jsx",
+      ".ts",
+      ".mts",
+      ".cts",
+      ".tsx",
+      ".vue",
+      ".json",
+      ".jsonc",
+      ".json5",
+    ],
   },
   plugins: [
     "document-write",
