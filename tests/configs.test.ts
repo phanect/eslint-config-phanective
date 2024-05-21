@@ -401,7 +401,7 @@ for (const lang of [ "js", "ts" ]) {
   const vitestOpts: ESLint.Options = {
     baseConfig: deepmerge(plainConfig as unknown as Linter.Config, lang === "ts" ? {
       parserOptions: {
-        project: join(__dirname, "fixtures/tsconfig.json"),
+        project: join(__dirname, "fixtures/tsconfig.tests.json"),
       },
     } : {}),
     useEslintrc: false,
