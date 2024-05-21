@@ -15,6 +15,7 @@ module.exports = deepmerge(config, {
   },
   ignorePatterns: [
     "tests/fixtures/invalid/*",
+    "rwt.json",
 
     "next.json",
     "node.json",

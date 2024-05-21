@@ -9,6 +9,7 @@
     "test": "npm run build && vitest run",
     "lint": "npm run build && tsc --noEmit && eslint .",
     "fix": "npm run build && eslint --fix .",
+    "rwt": "esno ./scripts/rwt.ts",
     "clean": "git clean -dX --force",
     "release": "npm run build && npm publish . --access public"
   },

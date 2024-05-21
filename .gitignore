@@ -10,6 +10,9 @@ svelte.json
 vue+*.json
 with-deps.json
 
+/tmp/
+/rwt.json
+
 #
 # System
 #

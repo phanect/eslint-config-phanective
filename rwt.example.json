@@ -1,0 +1,7 @@
+[
+  { "repo": "icedkey", "branch": "feat-impl", "type": "svelte" },
+  { "repo": "eslint-plugin-editorconfig", "type": "node" },
+  { "repo": "modtest", "type": "node" },
+  { "repo": "utils", "type": "node" },
+  { "repo": "create", "type": "node" }
+]
