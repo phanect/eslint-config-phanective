@@ -6,6 +6,7 @@ node.json
 nuxt+*.json
 plain.json
 react.json
+svelte.json
 vue+*.json
 with-deps.json
 

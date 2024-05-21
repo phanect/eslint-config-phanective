@@ -24,6 +24,7 @@ const plain: Linter.Config = {
       ".cts",
       ".tsx",
       ".vue",
+      ".svelte",
       ".json",
       ".jsonc",
       ".json5",
