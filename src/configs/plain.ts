@@ -171,7 +171,7 @@ const plain: Linter.Config = {
       },
     },
     {
-      files: [ "*.json", "*.json5" ],
+      files: [ "*.json", "*.jsonc", "*.json5" ],
       extends: "plugin:jsonc/base",
       parser: "jsonc-eslint-parser",
       rules: {
@@ -194,7 +194,12 @@ const plain: Linter.Config = {
     },
     {
       files: [ "*.json" ],
+      excludedFiles: [ "**/tsconfig.json", ".vscode/**/*.json" ],
       extends: "plugin:jsonc/recommended-with-json",
+    },
+    {
+      files: [ "*.jsonc", "**/tsconfig.json", ".vscode/**/*.json" ],
+      extends: "plugin:jsonc/recommended-with-jsonc",
     },
     {
       files: [ "*.json5" ],
