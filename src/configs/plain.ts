@@ -22,6 +22,14 @@ const plain: Linter.Config = {
     "jsdoc",
     "promise",
   ],
+  ignorePatterns: [
+    "node_modules/",
+    "package-lock.json",
+    "npm-shrinkwrap.json",
+
+    "dist/",
+    "tmp/",
+  ],
   rules: {
     "arrow-body-style": [ "error", "as-needed" ],
     "comma-dangle": [ "error", {
