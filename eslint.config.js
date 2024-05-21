@@ -6,6 +6,7 @@ export default [
     ignores: [
       "examples/**", // Run ESLint command in each module directories
       "tests/fixtures/invalid/**",
+      "rwt.json",
     ],
   },
   ...node,
