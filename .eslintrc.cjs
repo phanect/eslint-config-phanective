@@ -15,5 +15,16 @@ module.exports = deepmerge(config, {
   },
   ignorePatterns: [
     "tests/fixtures/invalid/*",
+
+    "next.json",
+    "node.json",
+    "nuxt+js.json",
+    "nuxt+ts.json",
+    "plain.json",
+    "react.json",
+    "svelte.json",
+    "vue+js.json",
+    "vue+ts.json",
+    "with-deps.json",
   ],
 });

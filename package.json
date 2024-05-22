@@ -7,7 +7,7 @@
   "scripts": {
     "build": "esno ./scripts/build.ts",
     "test": "npm run build && vitest run",
-    "lint": "npm run build && tsc --noEmit && eslint --ignore-path=.gitignore --ext=.js,.cjs,.mjs,.jsx,.ts,.tsx,.vue,.json,.json5 .",
+    "lint": "npm run build && tsc --noEmit && eslint --ext=.js,.cjs,.mjs,.jsx,.ts,.tsx,.vue,.json,.json5 .",
     "clean": "git clean -dX --force",
     "release": "npm run build && npm publish . --access public"
   },
