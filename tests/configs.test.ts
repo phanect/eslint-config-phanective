@@ -8,8 +8,6 @@ import { describe, it, test, expect } from "vitest";
 import nodeConfig from "../node.json";
 import plainConfig from "../plain.json";
 
-import type { PartialDeep } from "type-fest";
-
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const jsOpts: ESLint.Options = {
@@ -439,30 +437,16 @@ describe.each([
 
     const eslint = new ESLint(vitestOpts);
     const results = await eslint.lintFiles(join(__dirname, `fixtures/invalid/invalid-${lang}.test.${lang}`));
-    const [ result ] = results;
 
-    const messages = result.messages.map((originalMessage) => {
-      const message = originalMessage as PartialDeep<typeof originalMessage, {
-        recurseIntoArrays: true,
-      }>;
-
-      delete message.message;
-      delete message.nodeType;
-      message.suggestions = message.suggestions?.map(suggestion => {
-        delete suggestion?.desc;
-        return suggestion;
-      });
-
-      return message;
-    });
-
-    expect(messages).toEqual([
+    expect(results[0].messages).toEqual([
       {
         column: 1,
         endColumn: 3,
         endLine: 13,
         line: 11,
+        message: "Disabled test",
         messageId: "disabledTest",
+        nodeType: "CallExpression",
         ruleId: "vitest/no-disabled-tests",
         severity: 2,
       },
@@ -471,10 +455,13 @@ describe.each([
         endColumn: 10,
         endLine: 15,
         line: 15,
+        message: "Unexpected focused test",
         messageId: "focusedTest",
+        nodeType: "Identifier",
         ruleId: "vitest/no-focused-tests",
         severity: 2,
         suggestions: [{
+          desc: "Remove focus from test",
           fix:  {
             range: [
               176,
@@ -490,7 +477,9 @@ describe.each([
         endColumn: 23,
         endLine: 23,
         line: 23,
+        message: "Test title is used multiple times in the same describe block",
         messageId: "multipleTestTitle",
+        nodeType: "Literal",
         ruleId: "vitest/no-identical-title",
         severity: 2,
       },
@@ -506,7 +495,9 @@ describe.each([
           text: ").toHaveLength",
         },
         line: 28,
+        message: "Use toHaveLength() instead",
         messageId: "useToHaveLength",
+        nodeType: "Identifier",
         ruleId: "vitest/prefer-to-have-length",
         severity: 1,
       },
@@ -522,6 +513,7 @@ describe.each([
           text: ";",
         },
         line: 33,
+        message: "Missing semicolon.",
         messageId: "missingSemi",
         nodeType: "ExpressionStatement",
         ruleId: `${lang === "ts" ? "@typescript-eslint/" : ""}semi`,
@@ -530,8 +522,8 @@ describe.each([
     ]);
 
     expect(results).toHaveLength(1);
-    expect(result.errorCount).toBe(4);
-    expect(result.warningCount).toBe(1);
+    expect(results[0].errorCount).toBe(4);
+    expect(results[0].warningCount).toBe(1);
   });
 });
 
