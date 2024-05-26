@@ -14,7 +14,7 @@ module.exports = deepmerge(config, {
     project: join(__dirname, "tsconfig.json"),
   },
   ignorePatterns: [
-    "tests/fixtures/invalid/*",
+    "tests/fixtures/*",
     "rwt.json",
 
     "next.json",

@@ -19,7 +19,7 @@
   },
   "include": [ "**/*.js", "**/*.mjs", "**/*.ts", "**/*.mts" ],
   "exclude": [
-    "tests/fixtures/invalid/**",
+    "tests/fixtures/**",
     "dist",
     "node_modules"
   ]
