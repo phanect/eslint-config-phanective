@@ -9,4 +9,5 @@ tests/
 jest.config.js
 rwt.example.json
 rwt.json
+*.config.*
 yarn.lock
