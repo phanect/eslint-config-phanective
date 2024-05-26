@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-phanective",
-  "version": "2023.8.26",
+  "version": "2024.5.27",
   "description": "Personal ESLint configuration for Jumpei Ogawa (@phanect)",
   "type": "module",
   "main": "./plain.json",
