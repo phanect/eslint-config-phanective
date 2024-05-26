@@ -7,4 +7,6 @@ tests/
 .gitattributes
 .gitignore
 jest.config.js
+rwt.example.json
+rwt.json
 yarn.lock
