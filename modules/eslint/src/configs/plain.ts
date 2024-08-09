@@ -2,6 +2,7 @@ import stylistic from "@stylistic/eslint-plugin";
 import promise from "eslint-plugin-promise";
 import { ignoreConfigs } from "./overrides/ignores.ts";
 import { jsonConfigs } from "./overrides/json.ts";
+import { devConfigs } from "./overrides/nodejs.ts";
 import { vitestConfigs } from "./overrides/vitest.ts";
 import type { Linter } from "eslint";
 import { commonRules, jsRules, tsRules } from "./overrides/lang-specific.ts";
@@ -32,6 +33,7 @@ const plain: Linter.Config[] = [
   ...jsRules,
   ...tsRules,
   ...commonRules,
+  ...devConfigs,
   ...vitestConfigs,
   ...jsonConfigs,
 ] as const;

@@ -71,3 +71,33 @@ export const nodejsConfigs: Linter.Config[] = [
     },
   },
 ] as Linter.Config[];
+
+const devConfigsEsm = [
+  n.configs["flat/recommended-module"],
+  {
+    rules: nodejsCommonRules,
+  },
+].map(config => ({
+  ...config,
+  files: [
+    // config files
+    ".config/", // ./config/ directory proposal by @pi0 https://github.com/pi0/config-dir
+    "*.config.*",
+    ".eslintrc",
+    ".eslintrc.*",
+    // build scripts
+    "script/**",
+    "scripts/**",
+    // testcases
+    "test/**",
+    "tests/**",
+    "*.test.*",
+    "*.spec.*",
+  ],
+  ignores: [ "*.cjs" ],
+})) as Linter.Config[];
+
+export const devConfigs = [
+  ...devConfigsEsm,
+  cjsConfig,
+] as Linter.Config[];
