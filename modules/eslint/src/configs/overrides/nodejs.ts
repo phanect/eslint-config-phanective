@@ -5,6 +5,9 @@ const nodejsCommonRules = {
   //
   // Errors
   //
+  // Use `throw new Error()` instead of `process.exit(1)` as the official doc recommends
+  // https://nodejs.org/docs/latest-v22.x/api/process.html#process_process_exit_code
+  "n/no-process-exit": "error",
 
   // Use global one for standard JavaScript APIs.
   "n/prefer-global/console": "error",
@@ -27,8 +30,6 @@ const nodejsCommonRules = {
 
   // Duplicate of import-x/no-unresolved
   "n/no-missing-import": "off",
-
-  "n/no-process-exit": "off",
 
   // Only enable these rules on `phanective/with-deps` ruleset
   "n/no-unpublished-import": "off",
