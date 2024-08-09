@@ -2,7 +2,7 @@ import { nuxtBase } from "./overrides/nuxt.ts";
 import plain from "./plain.ts";
 import type { Linter } from "eslint";
 
-export const nuxtTS: Linter.Config[] =  [
+export const nuxtTS: Linter.Config[] = [
   ...plain,
   ...nuxtBase,
   {
