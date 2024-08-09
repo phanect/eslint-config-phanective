@@ -32,6 +32,17 @@ export type CodeExtensions = [
   "*.svelte",
 ];
 
+export type EsmExtensions = [
+  "*.js",
+  "*.mjs",
+  "*.jsx",
+  "*.ts",
+  "*.mts",
+  "*.tsx",
+  "*.vue",
+  "*.svelte",
+];
+
 export type JsExtensions = [
   "*.js",
   "*.mjs",

@@ -1,10 +1,5 @@
 {
   "extends": "@phanect/configs/tsconfig/nodejs",
-  "compilerOptions": {
-    "typeRoots": [
-      "./node_modules/@types/"
-    ]
-  },
   "include": [ "**/*.js", "**/*.mjs", "**/*.ts", "**/*.mts" ],
   "exclude": [
     "tests/fixtures/invalid/*.js", // Invalid JS fixtures raises some ESLint errors, and it may cause type errors too.

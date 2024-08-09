@@ -18,7 +18,7 @@ const prefixRequiredRules: Linter.RulesRecord = {
  * Config to be applied to both JS and TS.
  * This config have to be declared after the recommended rulesets to avoid to be overwritten.
  */
-export const commonRules: Linter.Config[] = [{
+export const commonConfigs: Linter.Config[] = [{
   files: [ "*.js", "*.mjs", "*.cjs", "*.jsx", "*.ts", "*.mts", "*.cts", "*.tsx", "*.vue", "*.svelte" ] as CodeExtensions,
 
   languageOptions: {
@@ -141,7 +141,7 @@ export const commonRules: Linter.Config[] = [{
   // },
 }] as const;
 
-export const jsRules: Linter.Config[] = [
+export const jsConfigs: Linter.Config[] = [
   js.configs.recommended,
   jsdoc.configs["flat/recommended"],
   {
@@ -159,7 +159,7 @@ export const jsRules: Linter.Config[] = [
   ...config,
 })) as Linter.Config[];
 
-export const tsRules: Linter.Config[] = ts.config(
+export const tsConfigs: Linter.Config[] = ts.config(
   js.configs.recommended,
   ...ts.configs.recommended,
   jsdoc.configs["flat/recommended-typescript"] as ConfigWithExtends,

@@ -5,10 +5,10 @@ import { jsonConfigs } from "./overrides/json.ts";
 import { devConfigs } from "./overrides/nodejs.ts";
 import { vitestConfigs } from "./overrides/vitest.ts";
 import type { Linter } from "eslint";
-import { commonRules, jsRules, tsRules } from "./overrides/lang-specific.ts";
+import { commonConfigs, jsConfigs, tsConfigs } from "./overrides/lang-specific.ts";
 import type { CodeExtensions } from "../utils.ts";
 
-const plain: Linter.Config[] = [
+export const configs: Linter.Config[] = [
   ...ignoreConfigs,
   {
     files: [ "*" ],
@@ -30,12 +30,10 @@ const plain: Linter.Config[] = [
   // importConfigs["flat/recommended"],
   // editorConfigConfigs["recommended"],
   // docWriteConfigs["recommended"],
-  ...jsRules,
-  ...tsRules,
-  ...commonRules,
+  ...jsConfigs,
+  ...tsConfigs,
+  ...commonConfigs,
   ...devConfigs,
   ...vitestConfigs,
   ...jsonConfigs,
 ] as const;
-
-export default plain;

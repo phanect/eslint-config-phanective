@@ -1,4 +1,5 @@
 import n from "eslint-plugin-n";
+import type { CodeExtensions, EsmExtensions } from "../../../../src/utils.ts";
 import type { Linter } from "eslint";
 
 const nodejsCommonRules = {
@@ -42,9 +43,11 @@ const mjsConfig: Linter.Config =   {
     "*.mjs",
     "*.jsx",
     "*.ts",
+    "*.mts",
     "*.tsx",
     "*.vue",
-  ],
+    "*.svelte",
+  ] as EsmExtensions,
   ...n.configs["flat/recommended-module"],
 };
 
@@ -55,19 +58,35 @@ export const cjsConfig: Linter.Config = {
   languageOptions: {
     sourceType: "commonjs",
   },
+  rules: {
+    // "import-x/no-unresolved": [ "error", { commonjs: true }],
+  },
 };
 
 export const nodejsConfigs: Linter.Config[] = [
   mjsConfig,
   cjsConfig,
   {
-    files: [ "**/*" ],
+    files: [
+      "*.js",
+      "*.mjs",
+      "*.cjs",
+      "*.jsx",
+      "*.ts",
+      "*.mts",
+      "*.cts",
+      "*.tsx",
+      "*.vue",
+      "*.svelte"
+    ] as CodeExtensions,
     plugins: {
       n,
     },
 
     rules: {
       ...nodejsCommonRules,
+      "n/no-unpublished-import": "error",
+      "n/no-unpublished-require": "error",
     },
   },
 ] as Linter.Config[];
