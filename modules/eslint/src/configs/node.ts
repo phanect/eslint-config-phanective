@@ -1,17 +1,10 @@
 import n from "eslint-plugin-n";
 import plain from "./plain.ts";
+import { nodejsConfigs } from "./overrides/nodejs.ts";
 import type { Linter } from "eslint";
 
 export const node: Linter.Config[] = [
   ...plain,
-  {
-    files: [ "*.js", "*.mjs", "*.jsx", "*.ts", "*.tsx", "*.vue" ],
-    ...n.configs["flat/recommended-module"],
-  },
-  {
-    files: [ "*.cjs" ],
-    ...n.configs["flat/recommended-script"],
-  },
   {
     // Import from devDependencies should be allowed for scripts used in local development.
     files: [
@@ -34,43 +27,5 @@ export const node: Linter.Config[] = [
       "n/no-unpublished-require": "off",
     },
   },
-  {
-    files: [ "**/*" ],
-    plugins: {
-      n,
-    },
-    rules: {
-      //
-      // Errors
-      //
-
-      // Use global one for standard JavaScript APIs.
-      "n/prefer-global/console": "error",
-      "n/prefer-global/text-decoder": "error",
-      "n/prefer-global/text-encoder": "error",
-      "n/prefer-global/url": "error",
-      "n/prefer-global/url-search-params": "error",
-
-      // Import or require Node.js-specific APIs.
-      "n/prefer-global/buffer": [ "error", "never" ],
-      "n/prefer-global/process": [ "error", "never" ],
-
-      "n/prefer-node-protocol": "error", // Prefer `import { ... } from "node:fs"` to `"fs"`
-      "n/prefer-promises/dns": "error",
-      "n/prefer-promises/fs": "error",
-
-      //
-      // Off
-      //
-
-      // Duplicate of import-x/no-unresolved
-      "n/no-missing-import": "off",
-
-      "n/no-process-exit": "off",
-
-      // Only enable these rules on `phanective/with-deps` ruleset
-      "n/no-unpublished-import": "off",
-      "n/no-unpublished-require": "off",
-    },
-  },
+  ...nodejsConfigs,
 ];
