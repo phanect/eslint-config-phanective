@@ -1,21 +1,14 @@
 import stylistic from "@stylistic/eslint-plugin";
-import jsonc from "eslint-plugin-jsonc";
 import promise from "eslint-plugin-promise";
-import vitest from "eslint-plugin-vitest";
+import { ignoreConfigs } from "./overrides/ignores.ts";
+import { jsonConfigs } from "./overrides/json.ts";
+import { vitestConfigs } from "./overrides/vitest.ts";
 import type { Linter } from "eslint";
 import { jsRules, tsRules } from "./overrides/lang-specific.ts";
-import type { CodeExtensions, JsonExtensions } from "../utils.ts";
+import type { CodeExtensions } from "../utils.ts";
 
 const plain: Linter.Config[] = [
-  {
-    ignores: [
-      "package-lock.json",
-      "npm-shrinkwrap.json",
-      ".svelte-kit/",
-      "dist/",
-      "tmp/",
-    ]
-  },
+  ...ignoreConfigs,
   {
     files: [ "*" ],
     linterOptions: {
@@ -24,9 +17,7 @@ const plain: Linter.Config[] = [
     },
     plugins: {
       "@stylistic": stylistic,
-      jsonc,
       promise,
-      vitest,
     },
   },
   {
@@ -135,84 +126,8 @@ const plain: Linter.Config[] = [
       sourceType: "commonjs",
     },
   },
-  {
-    files: [
-      "*.test.js",
-      "*.test.jsx",
-      "*.test.mjs",
-      "*.test.cjs",
-      "*.test.ts",
-      "*.test.tsx",
-    ],
-    rules: {
-      ...vitest.configs.recommended.rules,
-
-      //
-      // Errors
-      //
-      "vitest/no-disabled-tests": "error",
-      "vitest/no-focused-tests": "error",
-      "vitest/expect-expect": [ "error", {
-        assertFunctionNames: [ "expect", "ok" ],
-      }],
-
-      //
-      // Warnings - styles
-      //
-      "vitest/prefer-lowercase-title": [ "warn", { ignore: [ "describe", "test" ]}],
-      "vitest/prefer-to-have-length": "warn",
-
-      //
-      // Off
-      //
-      "vitest/no-conditional-expect": "off",
-      "vitest/require-top-level-describe": "off",
-    },
-  },
-  {
-    files: [ "*.json", "*.jsonc", "*.json5" ] as JsonExtensions,
-    rules: {
-      "jsonc/array-bracket-spacing": [ "error", "always", {
-        objectsInArrays: false,
-        arraysInArrays: false,
-      }],
-      "jsonc/comma-style": [ "error", "last" ],
-      "jsonc/indent": [ "error", 2 ],
-      "jsonc/key-spacing": [ "error", {
-        beforeColon: false,
-        afterColon: true,
-        mode: "minimum",
-      }],
-      "jsonc/object-curly-spacing": [ "error", "always", {
-        arraysInObjects: false,
-        objectsInObjects: false,
-      }],
-    }
-  },
-  ...(
-    jsonc.configs["flat/recommended-with-json"].map(config => ({
-      files: [ "*.json" ],
-      ignores: [ "**/tsconfig.json", ".vscode/**/*.json" ],
-      ...config
-    }))
-  ),
-  ...(
-    jsonc.configs["flat/recommended-with-jsonc"].map(config => ({
-      files: [ "*.jsonc", "**/tsconfig.json", ".vscode/**/*.json" ],
-      ...config
-    }))
-  ),
-  ...jsonc.configs["flat/recommended-with-json5"],
-  {
-    files: [ "*.json5" ],
-    rules: {
-      "jsonc/comma-dangle": [ "error", {
-        arrays: "always-multiline",
-        objects: "always-multiline",
-      }],
-      "jsonc/quote-props": [ "error", "as-needed" ],
-    },
-  },
+  ...vitestConfigs,
+  ...jsonConfigs,
 ] as const;
 
 export default plain;
